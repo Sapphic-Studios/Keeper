@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     {
         timer -= 0.01f;
         if (Input.GetMouseButtonDown(0))
-        { 
+        {
             Debug.Log("Pressed left click.");
             timer = 0.2f;
         }
@@ -45,5 +45,9 @@ public class Player : MonoBehaviour
     void OnCollisionStay2D(Collision2D collision)
     {
         if (timer < 0) rb.velocity = new Vector2(0f, 0f);
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private float SpeedX;
-    [SerializeField] private float SpeedY;
+    [SerializeField] private float SpeedX = 1;
+    [SerializeField] private float SpeedY = 1;
     private Vector3 starting_position;
     //public bool going_right;
     //public bool going_up;

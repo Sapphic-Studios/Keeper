@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InvisibleOnJump
   - Grapple Node
+  - Platform
   layers:
   - Default
   - TransparentFX

@@ -2763,6 +2763,7 @@ GameObject:
   - component: {fileID: 1640774692}
   - component: {fileID: 1640774691}
   - component: {fileID: 1640774690}
+  - component: {fileID: 1640774695}
   m_Layer: 0
   m_Name: MovingPlatformTest (1)
   m_TagString: Untagged
@@ -2975,7 +2976,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.13231516, a: 1}
   m_Origin: {x: -4, y: -4, z: 0}
   m_Size: {x: 6, y: 4, z: 1}
   m_TileAnchor: {x: 1, y: 1, z: 0}
@@ -2997,6 +2998,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1640774695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640774688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8564f267144509c4895b3ec9a6e5d4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1699805861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,8 +3408,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1733349481}
   - component: {fileID: 1733349480}
+  - component: {fileID: 1733349482}
   m_Layer: 0
-  m_Name: temp
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3466,6 +3480,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1733349482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733349479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2616efbeb3b7c264fa3c4cfa440bf83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 1
+  myColors:
+  - {r: 0.35920984, g: 0.1982467, b: 0.4245283, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1879587034
 GameObject:
   m_ObjectHideFlags: 0

@@ -2761,11 +2761,10 @@ GameObject:
   - component: {fileID: 1640774694}
   - component: {fileID: 1640774693}
   - component: {fileID: 1640774692}
-  - component: {fileID: 1640774691}
   - component: {fileID: 1640774690}
   - component: {fileID: 1640774695}
   m_Layer: 0
-  m_Name: MovingPlatformTest (1)
+  m_Name: Lerping platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2799,18 +2798,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedX: 0.2
   SpeedY: 0.2
---- !u!114 &1640774691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640774688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178467c64eaf79b48be5ca68228b661a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!19719996 &1640774692
 TilemapCollider2D:
   m_ObjectHideFlags: 0

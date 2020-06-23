@@ -11,7 +11,7 @@ public class Platform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindWithTag("Player");
         script = player.GetComponent<Player>();
         rb = player.GetComponent<Rigidbody2D>();
     }
@@ -66,7 +66,7 @@ public class Platform : MonoBehaviour
         {
             int rot = (int)transform.rotation.z;
             script.grav = new Vector2(0, 0);
-            rb.gravityScale = 10;
+            rb.gravityScale = 0;
         }
     }
 }

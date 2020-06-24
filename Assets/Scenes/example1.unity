@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 3835324}
   - component: {fileID: 3835325}
   - component: {fileID: 3835326}
+  - component: {fileID: 3835327}
   m_Layer: 0
   m_Name: MovingPlatformTest
   m_TagString: Untagged
@@ -369,6 +370,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedX: 0.2
   SpeedY: 0.2
+--- !u!114 &3835327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3835320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5133420
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +394,7 @@ GameObject:
   - component: {fileID: 5133424}
   - component: {fileID: 5133423}
   - component: {fileID: 5133422}
+  - component: {fileID: 5133425}
   m_Layer: 0
   m_Name: Ceiling (1)
   m_TagString: Untagged
@@ -563,6 +577,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &5133425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &15597273
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a32b5c896f16f44be6e8ec4890e355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grav: {x: 0, y: 0}
   timer: 0
 --- !u!1 &229630895
 GameObject:
@@ -711,6 +738,7 @@ GameObject:
   - component: {fileID: 229630899}
   - component: {fileID: 229630898}
   - component: {fileID: 229630897}
+  - component: {fileID: 229630900}
   m_Layer: 0
   m_Name: Right Wall (1)
   m_TagString: Untagged
@@ -893,6 +921,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &229630900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229630895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1389,7 @@ GameObject:
   - component: {fileID: 897542306}
   - component: {fileID: 897542305}
   - component: {fileID: 897542309}
+  - component: {fileID: 897542310}
   m_Layer: 0
   m_Name: Ground (1)
   m_TagString: Untagged
@@ -1581,6 +1622,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d24b5c540f6823429d44ba6a4708b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &897542310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897542303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1223722325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1646,7 @@ GameObject:
   - component: {fileID: 1223722328}
   - component: {fileID: 1223722327}
   - component: {fileID: 1223722329}
+  - component: {fileID: 1223722330}
   m_Layer: 0
   m_Name: Right Wall
   m_TagString: Untagged
@@ -1775,6 +1829,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1223722330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223722325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1288723895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1853,7 @@ GameObject:
   - component: {fileID: 1288723899}
   - component: {fileID: 1288723898}
   - component: {fileID: 1288723897}
+  - component: {fileID: 1288723900}
   m_Layer: 0
   m_Name: Right Wall (1)
   m_TagString: Untagged
@@ -1969,6 +2036,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1288723900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288723895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1462432725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2061,7 @@ GameObject:
   - component: {fileID: 1462432729}
   - component: {fileID: 1462432728}
   - component: {fileID: 1462432727}
+  - component: {fileID: 1462432731}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2202,6 +2282,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1462432731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462432725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1468843016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2389,7 @@ GameObject:
   - component: {fileID: 1531314635}
   - component: {fileID: 1531314633}
   - component: {fileID: 1531314634}
+  - component: {fileID: 1531314638}
   m_Layer: 0
   m_Name: Moving Hazard
   m_TagString: Untagged
@@ -2505,6 +2598,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1531314638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531314631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1583588593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,6 +2868,7 @@ GameObject:
   - component: {fileID: 1640774692}
   - component: {fileID: 1640774690}
   - component: {fileID: 1640774695}
+  - component: {fileID: 1640774691}
   m_Layer: 0
   m_Name: Lerping platform
   m_TagString: Untagged
@@ -2798,6 +2904,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedX: 0.2
   SpeedY: 0.2
+--- !u!114 &1640774691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640774688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!19719996 &1640774692
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -3013,6 +3131,7 @@ GameObject:
   - component: {fileID: 1699805865}
   - component: {fileID: 1699805864}
   - component: {fileID: 1699805863}
+  - component: {fileID: 1699805866}
   m_Layer: 0
   m_Name: Left Wall (1)
   m_TagString: Untagged
@@ -3195,6 +3314,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1699805866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699805861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1724449581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,6 +3338,7 @@ GameObject:
   - component: {fileID: 1724449584}
   - component: {fileID: 1724449583}
   - component: {fileID: 1724449585}
+  - component: {fileID: 1724449586}
   m_Layer: 0
   m_Name: Left Wall
   m_TagString: Untagged
@@ -3389,6 +3521,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1724449586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724449581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1733349479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,6 +3724,7 @@ GameObject:
   - component: {fileID: 1904440978}
   - component: {fileID: 1904440977}
   - component: {fileID: 1904440979}
+  - component: {fileID: 1904440980}
   m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
@@ -3762,6 +3907,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1904440980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904440975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2028346877
 GameObject:
   m_ObjectHideFlags: 0

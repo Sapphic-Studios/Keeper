@@ -4,27 +4,52 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private float SpeedX = 1;
-    [SerializeField] private float SpeedY = 1;
-    private Vector3 starting_position;
-    //public bool going_right;
-    //public bool going_up;
+    [SerializeField] private float SpeedX = 5;
+    [SerializeField] private float SpeedY = 5;
+    [SerializeField] private float LoopTimerX = 2f;
+    [SerializeField] private float LoopTimerY = 2f;
+    [SerializeField] private float delay = 0f;
+    private float ActualSpeedX = 0f;
+    private float ActualSpeedY = 0f;
+    private float t_x = 0f;
+    private float t_y = 0f;
+
+    //private Vector3 starting_position;
+    //[SerializeField] private Bool ;
+
 
     // Start is called before the first frame update
     void Start()
     {
-      starting_position = transform.position;
-      Debug.Log("starting postion: " + starting_position);
-      Debug.Log("x: " + starting_position.x);
-      Debug.Log("y: " + starting_position.y);
-      Debug.Log("z: " + starting_position.z);
+      t_x = LoopTimerX;
+      t_y = LoopTimerY;
+      ActualSpeedX = SpeedX;
+      ActualSpeedY = SpeedY;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      transform.position = new Vector3( (transform.position.x + (SpeedX * Time.deltaTime)), (transform.position.y + (SpeedY * Time.deltaTime)), transform.position.z);
+      if(delay > 0){
+        delay = delay - Time.deltaTime;
+      }
+      else{
+
+        t_x = t_x - Time.deltaTime;
+        t_y = t_y - Time.deltaTime;
+
+        if( t_x <= 0 ){
+          ActualSpeedX = SpeedX * Mathf.Sign(SpeedX) * Mathf.Sign(ActualSpeedX) * -1;
+          t_x = LoopTimerX;
+        }
+        if( t_y <= 0 ){
+          ActualSpeedY = SpeedY * Mathf.Sign(SpeedY) * Mathf.Sign(ActualSpeedY) * -1;
+          t_y = LoopTimerY;
+        }
+        transform.position = new Vector3( (transform.position.x + (ActualSpeedX * Time.deltaTime)), (transform.position.y + (ActualSpeedY * Time.deltaTime)), transform.position.z);
+
+      }
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
@@ -40,4 +65,6 @@ public class MovingPlatform : MonoBehaviour
         collision.collider.transform.SetParent(null);
       }
     }
+
+
 }

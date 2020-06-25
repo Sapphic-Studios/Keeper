@@ -8,11 +8,13 @@ public class PointAndMove : MonoBehaviour
     public GameObject pointer;
     public GameObject player;
     public GameObject arrow;
+    public Player script;
     public float speed = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
+        script = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,11 @@ public class PointAndMove : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
             moveInDirection(direction, rotationZ);
+            arrow.SetActive(false);
+        }
+        if (script.grounded)
+        {
+            arrow.SetActive(true);
         }
     }
     void moveInDirection(Vector2 direction, float rotationZ)

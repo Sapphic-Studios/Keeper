@@ -5417,10 +5417,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50ebc8f1089f0946bb5fc24c310568d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -20
-  maxX: 13
-  minY: -5
-  maxY: 14
+  minX: -200
+  maxX: 200
+  minY: -200
+  maxY: 200
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &551091298

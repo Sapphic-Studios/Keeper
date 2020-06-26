@@ -38,46 +38,50 @@ public class Player : MonoBehaviour
           Debug.Log("Pressed middle click.");
 
         float movement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        grounded = IsGrounded();
         if (grounded)
         {
-            switch (transform.rotation.z)
+            Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
+            switch (Mathf.RoundToInt(transform.rotation.eulerAngles.z))
             {
+                
                 case 0: //Ground
+                    Debug.Log("Ground");
                     transform.position = new Vector2(transform.position.x + movement, transform.position.y);
+                    
                     break;
                 case 90: //Left facing wall
+                    Debug.Log("Left facing wall");
                     transform.position = new Vector2(transform.position.x , transform.position.y + movement);
                     break;
                 case 180: //Ceiling
+                    Debug.Log("Ceiling");
                     transform.position = new Vector2(transform.position.x - movement, transform.position.y);
                     break;
                 case 270: //Right facing wall
+                    Debug.Log("Right facing wall");
                     transform.position = new Vector2(transform.position.x , transform.position.y + movement);
                     break;
             }
 
         }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+        }
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
             Debug.Log("left");
-            float h = Input.GetAxis("Horizontal");
-            this.GetComponent<SpriteRenderer>().flipX = true;
+            this.GetComponent<SpriteRenderer>().flipX = false;
             
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
             Debug.Log("right");
-            this.GetComponent<SpriteRenderer>().flipX = false;
+            this.GetComponent<SpriteRenderer>().flipX = true;
 
         }
-        if (timer < 0)
-        {
-            grounded = IsGrounded();
-        }
-        else
-        {
-            grounded = false;
-        }
+
         
         
         
@@ -86,7 +90,7 @@ public class Player : MonoBehaviour
     public bool IsGrounded()
     {
         float extra = .1f;
-        RaycastHit2D raycast = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size,transform.rotation.z, transform.TransformDirection(Vector3.forward),  extra, playformLayer);
+        RaycastHit2D raycast = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size,transform.rotation.z, transform.TransformDirection(Vector3.down),  extra, playformLayer);
         Color rayColor;
         if (raycast.collider != null)
         {

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Platform : MonoBehaviour
 {
     GameObject player;
     Player script;
     Rigidbody2D rb;
+    TilemapCollider2D collider;
     public float hitTimer;
     public bool up, left, right, down;
     // Start is called before the first frame update
@@ -35,6 +37,11 @@ public class Platform : MonoBehaviour
                 right = true;
                 break;
         }
+
+        if (this.tag == "Platforms")
+        {
+            collider.offset = new Vector2(0, 0.1f);
+        }
     }
 
     // Update is called once per frame
@@ -43,14 +50,15 @@ public class Platform : MonoBehaviour
         hitTimer -= 0.01f;
         if (script.grounded)
         {
-            if (hitTimer > 0)
+            /*
+            if (hitTimer < 0)
             {
                 rb.velocity = new Vector2(0, 0);
             }
             
             Vector3 euler = transform.rotation.eulerAngles;
             Quaternion rot = Quaternion.Euler(0, 0, euler.z);
-            player.transform.rotation = rot;
+            player.transform.rotation = rot;*/
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,15 +70,17 @@ public class Platform : MonoBehaviour
             hitTimer = 0.2f;
             //script.grounded = true;
             rb.velocity = new Vector2(0f, 0f);
-            
+
             Vector3 euler = transform.rotation.eulerAngles;
             Quaternion rot = Quaternion.Euler(0, 0, euler.z);
             player.transform.rotation = rot;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             int angle = (int)euler.z;
             switch (angle)
             {
                 case 0: //Ground
                     Debug.Log("On Ground");
+
                     break;
                 case 90: //Left facing wall
                     Debug.Log("On Left Wall");
@@ -91,12 +101,5 @@ public class Platform : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            //script.grounded = false;
-            int rot = (int)transform.rotation.z;
-            script.grav = new Vector2(0, 0);
-            rb.gravityScale = 0;
-        }
     }
 }

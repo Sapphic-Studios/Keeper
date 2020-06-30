@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
+    public Animator animator;
     public Vector2 grav;
     public float timer;
     private float speed = 5f;
@@ -19,6 +20,12 @@ public class Player : MonoBehaviour
         coll = GetComponent<PolygonCollider2D>();
     }
 
+    void Update()
+    {
+        animator.SetFloat("speed", (rb.velocity.x + rb.velocity.y));
+        animator.SetBool("grounded", IsGrounded() );
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -27,7 +34,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Pressed left click.");
-            
+
             timer = 0.2f;
         }
         if(Input.GetMouseButtonDown(0))
@@ -62,7 +69,7 @@ public class Player : MonoBehaviour
             Debug.Log("left");
             float h = Input.GetAxis("Horizontal");
             this.GetComponent<SpriteRenderer>().flipX = true;
-            
+
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
@@ -78,9 +85,9 @@ public class Player : MonoBehaviour
         {
             grounded = false;
         }
-        
-        
-        
+
+
+
     }
 
     public bool IsGrounded()
@@ -104,9 +111,9 @@ public class Player : MonoBehaviour
         return raycast.collider != null;
 
     }
-    
+
     void OnCollisionExit2D(Collision2D collision)
     {
-        
+
     }
 }

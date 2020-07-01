@@ -7,17 +7,20 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     public Animator animator;
+    public GameObject platform;
     public Vector2 grav;
+    public Quaternion rot;
     public float timer;
     private float speed = 5f;
     public bool grounded;
-    PolygonCollider2D coll;
-    [SerializeField] private LayerMask playformLayer;
+    public CapsuleCollider2D coll;
+    float extra = .1f;
+    [SerializeField] public LayerMask platformLayer;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<PolygonCollider2D>();
+        coll = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -30,12 +33,12 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         timer -= 0.01f;
-        Physics2D.gravity = grav;
+        transform.rotation = rot;
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Pressed left click.");
 
-            timer = 0.2f;
+            timer = 0.04f;
         }
         if(Input.GetMouseButtonDown(0))
 
@@ -43,12 +46,17 @@ public class Player : MonoBehaviour
           Debug.Log("Pressed right click.");
         if(Input.GetMouseButtonDown(2))
           Debug.Log("Pressed middle click.");
-
+        
         float movement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        
         grounded = IsGrounded();
         if (grounded)
         {
+            if (atLeftEdge() && movement < 0f) movement = 0f;
+            if (atRightEdge() && movement > 0f) movement = 0f;
             Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
+
+            if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
             switch (Mathf.RoundToInt(transform.rotation.eulerAngles.z))
             {
                 
@@ -63,11 +71,11 @@ public class Player : MonoBehaviour
                     break;
                 case 180: //Ceiling
                     Debug.Log("Ceiling");
-                    transform.position = new Vector2(transform.position.x - movement, transform.position.y);
+                    transform.position = new Vector2(transform.position.x + movement, transform.position.y);
                     break;
                 case 270: //Right facing wall
                     Debug.Log("Right facing wall");
-                    transform.position = new Vector2(transform.position.x , transform.position.y + movement);
+                    transform.position = new Vector2(transform.position.x , transform.position.y - movement);
                     break;
             }
 
@@ -79,25 +87,21 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
             Debug.Log("left");
-            this.GetComponent<SpriteRenderer>().flipX = false;
+            this.GetComponent<SpriteRenderer>().flipX = true;
             
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
             Debug.Log("right");
-            this.GetComponent<SpriteRenderer>().flipX = true;
-
-        }
-
-        
-        
-        
+            this.GetComponent<SpriteRenderer>().flipX = false;
+        }     
     }
 
     public bool IsGrounded()
     {
-        float extra = .1f;
-        RaycastHit2D raycast = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size,transform.rotation.z, transform.TransformDirection(Vector3.down),  extra, playformLayer);
+        
+        RaycastHit2D raycast = Physics2D.Raycast(coll.bounds.center, -transform.up, Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y) + extra, platformLayer);
+        //RaycastHit2D raycast = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size,transform.rotation.z, transform.TransformDirection(Vector3.down),  extra, playformLayer);
         Color rayColor;
         if (raycast.collider != null)
         {
@@ -107,15 +111,101 @@ public class Player : MonoBehaviour
         {
             rayColor = Color.red;
         }
+        Debug.DrawRay(coll.bounds.center, -transform.up * Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y), rayColor);
+        /*
         Debug.DrawRay(coll.bounds.center + new Vector3(coll.bounds.extents.x,0), Vector2.down * (coll.bounds.extents.y + extra), rayColor);
-        Debug.DrawRay(coll.bounds.center - new Vector3(coll.bounds.extents.x, 0), Vector2.down * (coll.bounds.extents.y + extra), rayColor);
-        Debug.DrawRay(coll.bounds.center + new Vector3(coll.bounds.extents.x, coll.bounds.extents.y + extra), Vector2.right * (coll.bounds.extents.x), rayColor);
-        Debug.DrawRay(coll.bounds.center - new Vector3(coll.bounds.extents.x, coll.bounds.extents.y + extra), Vector2.right * (coll.bounds.extents.x), rayColor);
-        Debug.Log(raycast.collider);
+        Debug.DrawRay(coll.bounds.center - new Vector3(coll.bounds.extents.x, 0), Vector2.down * (coll.bounds.extents.y + extra), rayColor)
+        Debug.DrawRay(coll.bounds.center - new Vector3(coll.bounds.extents.x, coll.bounds.extents.y + extra), Vector2.right * (coll.bounds.extents.x) * 2, rayColor);
+        */
+        //Debug.Log(raycast.collider);
         return raycast.collider != null;
 
     }
+    public bool atLeftEdge()
+    {
+        RaycastHit2D raycast;
+        Color rayColor = Color.yellow;
+        Vector3 shift = new Vector3(0,0,0);
+        switch ((int)rot.eulerAngles.z)
+        {
+            case 0: //Ground
+                Debug.Log("Ground");
+                shift = coll.bounds.center - new Vector3(coll.bounds.extents.x, 0);
+               
+                
+                break;
+            case 90: //Left facing wall
+                Debug.Log("Left facing wall");
+                shift = coll.bounds.center - new Vector3(0, coll.bounds.extents.y);
+                
+                break;
+            case 180: //Ceiling
+                Debug.Log("Ceiling");
+                shift = coll.bounds.center + new Vector3(coll.bounds.extents.x, 0);
+              
+                break;
+            case 270: //Right facing wall
+                Debug.Log("Right facing wall");
+                shift = coll.bounds.center + new Vector3(0, coll.bounds.extents.y);
+                
+                break;
+        }
+        raycast = Physics2D.Raycast(shift, -transform.up, Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y) + extra, platformLayer);
+        if (raycast.collider != null)
+        {
+            rayColor = Color.yellow;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        Debug.DrawRay(shift, -transform.up * Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y), rayColor);
+        //RaycastHit2D raycast = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size,transform.rotation.z, transform.TransformDirection(Vector3.down),  extra, playformLayer);
 
+
+        return raycast.collider == null;
+    }
+    public bool atRightEdge()
+    {
+        RaycastHit2D raycast;
+        Color rayColor = Color.yellow;
+        Vector3 shift = new Vector3(0, 0, 0);
+        switch ((int)rot.eulerAngles.z)
+        {
+            case 0: //Ground
+                Debug.Log("Ground");
+                shift = coll.bounds.center + new Vector3(coll.bounds.extents.x, 0);
+
+
+                break;
+            case 90: //Left facing wall
+                Debug.Log("Left facing wall");
+                shift = coll.bounds.center + new Vector3(0, coll.bounds.extents.y);
+
+                break;
+            case 180: //Ceiling
+                Debug.Log("Ceiling");
+                shift = coll.bounds.center - new Vector3(coll.bounds.extents.x, 0);
+
+                break;
+            case 270: //Right facing wall
+                Debug.Log("Right facing wall");
+                shift = coll.bounds.center - new Vector3(0, coll.bounds.extents.y);
+
+                break;
+        }
+        raycast = Physics2D.Raycast(shift, -transform.up, Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y) + extra, platformLayer);
+        if (raycast.collider != null)
+        {
+            rayColor = Color.yellow;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        Debug.DrawRay(shift, -transform.up * Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y), rayColor);
+        return raycast.collider == null;
+    }
     void OnCollisionExit2D(Collision2D collision)
     {
 

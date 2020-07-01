@@ -53,8 +53,16 @@ public class Player : MonoBehaviour
         grounded = IsGrounded();
         if (grounded)
         {
-            if (atLeftEdge() && movement < 0f) movement = 0f;
-            if (atRightEdge() && movement > 0f) movement = 0f;
+            if((int)rot.eulerAngles.z != 180){
+                if (atLeftEdge() && movement < 0f) movement = 0f;
+                if (atRightEdge() && movement > 0f) movement = 0f;
+            }
+            else
+            {
+                if (atLeftEdge() && movement > 0f) movement = 0f;
+                if (atRightEdge() && movement < 0f) movement = 0f;
+            }
+            
             Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
 
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
@@ -89,15 +97,19 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("walking", true);
             Debug.Log("left");
-            this.GetComponent<SpriteRenderer>().flipX = true;
+            if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = false;
+            else this.GetComponent<SpriteRenderer>().flipX = true;
+
 
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
             animator.SetBool("walking", true);
             Debug.Log("right");
-            this.GetComponent<SpriteRenderer>().flipX = false;
+            if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
+            else this.GetComponent<SpriteRenderer>().flipX = false;
         }
+        if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     public bool IsGrounded()

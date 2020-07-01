@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     {
       animator.SetFloat("speed", Mathf.Abs((rb.velocity.x + rb.velocity.y)));
       animator.SetBool("grounded", IsGrounded() );
+      animator.SetBool("walking", false);
     }
 
     // Update is called once per frame
@@ -86,13 +87,14 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
-
+            animator.SetBool("walking", true);
             Debug.Log("left");
             this.GetComponent<SpriteRenderer>().flipX = true;
 
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
+            animator.SetBool("walking", true);
             Debug.Log("right");
             this.GetComponent<SpriteRenderer>().flipX = false;
         }

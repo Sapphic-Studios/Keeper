@@ -26,7 +26,7 @@ public class Platform : MonoBehaviour
         rb = player.GetComponent<Rigidbody2D>();
         collider = GetComponent<TilemapCollider2D>();
 
-        
+
 
         euler = transform.rotation.eulerAngles;
         rot = Quaternion.Euler(0, 0, euler.z);
@@ -52,7 +52,6 @@ public class Platform : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         hitTimer -= 0.01f;
@@ -63,12 +62,13 @@ public class Platform : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
             }
-            
+
             Vector3 euler = transform.rotation.eulerAngles;
             Quaternion rot = Quaternion.Euler(0, 0, euler.z);
             player.transform.rotation = rot;*/
         }
     }
+
     bool directionHit(Direction d){
 
         RaycastHit2D hit;
@@ -94,7 +94,7 @@ public class Platform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("hit");
-       
+
         if (collision.gameObject.tag == "Player")
         {
             script.platform = this.gameObject;
@@ -105,12 +105,12 @@ public class Platform : MonoBehaviour
 
             hitTimer = 0.2f;
             //script.grounded = true;
-            
 
-            
+
+
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             int angle = (int)euler.z;
-            
+
             if (directionHit(dir))
             {
                 rb.velocity = new Vector2(0f, 0f);

@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat("speed", (rb.velocity.x + rb.velocity.y));
-        animator.SetBool("grounded", IsGrounded() );
+      animator.SetFloat("speed", Mathf.Abs((rb.velocity.x + rb.velocity.y)));
+      animator.SetBool("grounded", IsGrounded() );
     }
 
     // Update is called once per frame
@@ -46,9 +46,9 @@ public class Player : MonoBehaviour
           Debug.Log("Pressed right click.");
         if(Input.GetMouseButtonDown(2))
           Debug.Log("Pressed middle click.");
-        
+
         float movement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        
+
         grounded = IsGrounded();
         if (grounded)
         {
@@ -59,11 +59,11 @@ public class Player : MonoBehaviour
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
             switch (Mathf.RoundToInt(transform.rotation.eulerAngles.z))
             {
-                
+
                 case 0: //Ground
                     Debug.Log("Ground");
                     transform.position = new Vector2(transform.position.x + movement, transform.position.y);
-                    
+
                     break;
                 case 90: //Left facing wall
                     Debug.Log("Left facing wall");
@@ -86,20 +86,21 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
+
             Debug.Log("left");
             this.GetComponent<SpriteRenderer>().flipX = true;
-            
+
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
             Debug.Log("right");
             this.GetComponent<SpriteRenderer>().flipX = false;
-        }     
+        }
     }
 
     public bool IsGrounded()
     {
-        
+
         RaycastHit2D raycast = Physics2D.Raycast(coll.bounds.center, -transform.up, Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y) + extra, platformLayer);
         //RaycastHit2D raycast = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size,transform.rotation.z, transform.TransformDirection(Vector3.down),  extra, playformLayer);
         Color rayColor;
@@ -131,23 +132,23 @@ public class Player : MonoBehaviour
             case 0: //Ground
                 Debug.Log("Ground");
                 shift = coll.bounds.center - new Vector3(coll.bounds.extents.x, 0);
-               
-                
+
+
                 break;
             case 90: //Left facing wall
                 Debug.Log("Left facing wall");
                 shift = coll.bounds.center - new Vector3(0, coll.bounds.extents.y);
-                
+
                 break;
             case 180: //Ceiling
                 Debug.Log("Ceiling");
                 shift = coll.bounds.center + new Vector3(coll.bounds.extents.x, 0);
-              
+
                 break;
             case 270: //Right facing wall
                 Debug.Log("Right facing wall");
                 shift = coll.bounds.center + new Vector3(0, coll.bounds.extents.y);
-                
+
                 break;
         }
         raycast = Physics2D.Raycast(shift, -transform.up, Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y) + extra, platformLayer);

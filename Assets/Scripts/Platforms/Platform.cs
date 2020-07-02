@@ -87,13 +87,13 @@ public class Platform : MonoBehaviour
                 raycast = Physics2D.Raycast(script.coll.bounds.center, Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
                 break;
         }
-        Debug.Log(raycast.collider);
+        //Debug.Log(raycast.collider);
         return raycast.collider != null;
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("hit");
+        //Debug.Log("hit");
 
         if (collision.gameObject.tag == "Player")
         {
@@ -120,17 +120,17 @@ public class Platform : MonoBehaviour
             switch (angle)
             {
                 case 0: //Ground
-                    Debug.Log("On Ground");
+                    //Debug.Log("On Ground");
                     //player.transform.position = new Vector3(player.transform.position.x,this.transform.position.y, player.transform.position.z);
                     break;
                 case 90: //Left facing wall
-                    Debug.Log("On Left Wall");
+                    //Debug.Log("On Left Wall");
                     break;
                 case 180: //Ceiling
-                    Debug.Log("On Ceiling");
+                    //Debug.Log("On Ceiling");
                     break;
                 case 270: //Right facing wall
-                    Debug.Log("On Right Wall");
+                    //Debug.Log("On Right Wall");
                     break;
             }
         }

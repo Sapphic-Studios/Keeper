@@ -29,13 +29,13 @@ public class PlatformLerper : MonoBehaviour
         for (int y = 0; y < bounds.size.y; y++) {
             TileBase tile = allTiles[x + y * bounds.size.x];
             if (tile != null) {
-                Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
+                //Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
             } else {
-                Debug.Log("x:" + x + " y:" + y + " tile: (null)");
+                //Debug.Log("x:" + x + " y:" + y + " tile: (null)");
             }
         }
     }
-    
+
     //thisTilemap.setColor = Color.Lerp(thisTilemap.color, myColors[colorIndex], lerpTime*Time.deltaTime);
 
     t = Mathf.Lerp(t, 1f, lerpTime*Time.deltaTime);

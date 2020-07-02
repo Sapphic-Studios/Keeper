@@ -53,16 +53,16 @@ public class PointAndMove : MonoBehaviour
         switch ((int)script.rot.eulerAngles.z)
         {
             case 0: //Ground
-                Debug.Log("Ground");
+                //Debug.Log("Ground");
                 return (target.y < player.transform.position.y);
             case 90: //Left facing wall
-                Debug.Log("Left facing wall");
+                //Debug.Log("Left facing wall");
                 return (target.x > player.transform.position.x);
             case 180: //Ceiling
-                Debug.Log("Ceiling");
+                //Debug.Log("Ceiling");
                 return (target.y > player.transform.position.y);
             case 270: //Right facing wall
-                Debug.Log("Right facing wall");
+                //Debug.Log("Right facing wall");
                 return (target.x < player.transform.position.x);
         }
         return false;

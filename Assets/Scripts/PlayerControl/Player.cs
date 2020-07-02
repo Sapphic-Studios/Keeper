@@ -62,28 +62,28 @@ public class Player : MonoBehaviour
                 if (atLeftEdge() && movement > 0f) movement = 0f;
                 if (atRightEdge() && movement < 0f) movement = 0f;
             }
-            
-            Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
+
+            //Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
 
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
             switch (Mathf.RoundToInt(transform.rotation.eulerAngles.z))
             {
 
                 case 0: //Ground
-                    Debug.Log("Ground");
+                    //Debug.Log("Ground");
                     transform.position = new Vector2(transform.position.x + movement, transform.position.y);
 
                     break;
                 case 90: //Left facing wall
-                    Debug.Log("Left facing wall");
+                    //Debug.Log("Left facing wall");
                     transform.position = new Vector2(transform.position.x , transform.position.y + movement);
                     break;
                 case 180: //Ceiling
-                    Debug.Log("Ceiling");
+                    //Debug.Log("Ceiling");
                     transform.position = new Vector2(transform.position.x + movement, transform.position.y);
                     break;
                 case 270: //Right facing wall
-                    Debug.Log("Right facing wall");
+                    //Debug.Log("Right facing wall");
                     transform.position = new Vector2(transform.position.x , transform.position.y - movement);
                     break;
             }
@@ -95,8 +95,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
-            animator.SetBool("walking", true);
-            Debug.Log("left");
+            //animator.SetBool("walking", true);
+            //Debug.Log("left");
             if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = false;
             else this.GetComponent<SpriteRenderer>().flipX = true;
 
@@ -104,8 +104,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
         {
-            animator.SetBool("walking", true);
-            Debug.Log("right");
+            //animator.SetBool("walking", true);
+            //Debug.Log("right");
             if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
             else this.GetComponent<SpriteRenderer>().flipX = false;
         }
@@ -144,23 +144,23 @@ public class Player : MonoBehaviour
         switch ((int)rot.eulerAngles.z)
         {
             case 0: //Ground
-                Debug.Log("Ground");
+                //Debug.Log("Ground");
                 shift = coll.bounds.center - new Vector3(coll.bounds.extents.x, 0);
 
 
                 break;
             case 90: //Left facing wall
-                Debug.Log("Left facing wall");
+                //Debug.Log("Left facing wall");
                 shift = coll.bounds.center - new Vector3(0, coll.bounds.extents.y);
 
                 break;
             case 180: //Ceiling
-                Debug.Log("Ceiling");
+                //Debug.Log("Ceiling");
                 shift = coll.bounds.center + new Vector3(coll.bounds.extents.x, 0);
 
                 break;
             case 270: //Right facing wall
-                Debug.Log("Right facing wall");
+                //Debug.Log("Right facing wall");
                 shift = coll.bounds.center + new Vector3(0, coll.bounds.extents.y);
 
                 break;
@@ -188,23 +188,23 @@ public class Player : MonoBehaviour
         switch ((int)rot.eulerAngles.z)
         {
             case 0: //Ground
-                Debug.Log("Ground");
+                //Debug.Log("Ground");
                 shift = coll.bounds.center + new Vector3(coll.bounds.extents.x, 0);
 
 
                 break;
             case 90: //Left facing wall
-                Debug.Log("Left facing wall");
+                //Debug.Log("Left facing wall");
                 shift = coll.bounds.center + new Vector3(0, coll.bounds.extents.y);
 
                 break;
             case 180: //Ceiling
-                Debug.Log("Ceiling");
+                //Debug.Log("Ceiling");
                 shift = coll.bounds.center - new Vector3(coll.bounds.extents.x, 0);
 
                 break;
             case 270: //Right facing wall
-                Debug.Log("Right facing wall");
+                //Debug.Log("Right facing wall");
                 shift = coll.bounds.center - new Vector3(0, coll.bounds.extents.y);
 
                 break;

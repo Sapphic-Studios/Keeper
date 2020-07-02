@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     public Animator animator;
+    public DialogueManager DM;
     public GameObject platform;
     public Vector2 grav;
     public Quaternion rot;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
+        DM = FindObjectOfType<DialogueManager>();
     }
 
     void Update()
@@ -28,6 +30,11 @@ public class Player : MonoBehaviour
       animator.SetFloat("speed", Mathf.Abs((rb.velocity.x + rb.velocity.y)));
       animator.SetBool("grounded", IsGrounded() );
       animator.SetBool("walking", false);
+      //handles advancing dialogue via DialogueManager
+      if(Input.GetKeyDown("z")){
+          DM.DisplayNextSentence();
+      }
+
     }
 
     // Update is called once per frame
@@ -225,4 +232,5 @@ public class Player : MonoBehaviour
     {
 
     }
+
 }

@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
       if(Input.GetKeyDown("z")){
           DM.DisplayNextSentence();
       }
-
     }
 
     // Update is called once per frame

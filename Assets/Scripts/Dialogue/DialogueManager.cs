@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     private Queue<string> sentences;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
       Debug.Log("Starting conversation with "  + dialogue.name);
+      animator.SetBool("OnScreen", true);
       nameText.text = dialogue.name;
 
       sentences.Clear();
@@ -53,6 +56,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue(){
       Debug.Log("End of Dialogue");
+      animator.SetBool("OnScreen", false);
     }
 
 

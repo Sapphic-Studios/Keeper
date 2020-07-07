@@ -110,7 +110,7 @@ public class Platform : MonoBehaviour
 
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             int angle = (int)euler.z;
-
+            //rb.velocity = new Vector2(0f, 0f); script.rot = rot;
             if (directionHit(dir))
             {
                 rb.velocity = new Vector2(0f, 0f);

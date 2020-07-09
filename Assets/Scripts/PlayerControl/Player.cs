@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
         else if(Input.GetMouseButtonDown(1)){
           Debug.Log("Pressed right click.");
           Debug.Log("mouse click position: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
-          joint
 
 
           //Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.green);

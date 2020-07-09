@@ -16,13 +16,8 @@ public class SoundManager : MonoBehaviour
         soundTimerDictionary = new Dictionary<Sound, float>();
         foreach (Sound s in sounds)
         {    
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            //ds.source.volume = s.volume;
-            //as.source.pitch = s.pitch;
             soundTimerDictionary[s] = 0f; 
         }
-        PlaySound("Step");
     }
     private void Update()
     {
@@ -30,38 +25,56 @@ public class SoundManager : MonoBehaviour
     }
     private bool CanPlaySound(Sound s)
     {
-
-        
         if (soundTimerDictionary.ContainsKey(s))
         {
             float lastPlayed = soundTimerDictionary[s];
             if (lastPlayed + s.delay <= Time.time)
-            {
-                soundTimerDictionary[s] = Time.time;
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
         else
-        {
             return false;
-        }
     }
-    // Start is called before the first frame update
-    public void PlaySound(string name)
+    private Sound findSound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.Log("no sound");
-            return;
+            return null;
+        }return s;
+    }
+    private void GenerateSound(Sound s)
+    {
+        GameObject obj = new GameObject("Sound");
+        AudioSource audio = obj.AddComponent<AudioSource>();
+        audio.clip = s.clip;
+        audio.volume = s.volume;
+        audio.pitch = s.pitch;
+        audio.Play();
+        soundTimerDictionary[s] = Time.time;
+        //s.source.Play();
+        UnityEngine.Object.Destroy(obj, audio.clip.length);
+    }
+    // Start is called before the first frame update
+    public void PlaySound(string name, bool oneShot)
+    {
+        Sound s = findSound(name);
+        if (s == null) return;
+        if (oneShot || CanPlaySound(s))
+        {
+            GenerateSound(s);
         }
+    }
+    public void PlaySound(string name, Vector3 position)
+    {
+        Sound s = findSound(name);
+        if (s == null) return;
         if (CanPlaySound(s))
         {
             GameObject obj = new GameObject("Sound");
+            obj.transform.position = position;
             AudioSource audio = obj.AddComponent<AudioSource>();
             audio.clip = s.clip;
             audio.volume = s.volume;
@@ -71,6 +84,6 @@ public class SoundManager : MonoBehaviour
             //s.source.Play();
             UnityEngine.Object.Destroy(obj, audio.clip.length);
         }
-        
+
     }
 }

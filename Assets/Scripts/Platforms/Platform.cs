@@ -97,6 +97,7 @@ public class Platform : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
+            script.sound.PlaySound("Step",true);
             script.platform = this.gameObject;
             rayUp = new Ray2D(player.transform.position, Vector3.up);
             rayDown = new Ray2D(player.transform.position, Vector3.down);

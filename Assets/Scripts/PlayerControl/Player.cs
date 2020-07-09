@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public bool grounded;
     public CapsuleCollider2D coll;
     float extra = .1f;
-    SoundManager sound;
+    public SoundManager sound;
     [SerializeField] public LayerMask platformLayer;
     // Start is called before the first frame update
     void Start()
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
             //Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
             if (movement != 0)
             {
-                sound.PlaySound("Step");
+                sound.PlaySound("Step",false);
                 animator.SetBool("walking", true);
             }
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
         Debug.DrawRay(shift, -transform.up * Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y), rayColor);
         return raycast.collider == null;
     }
-    void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
 
     }

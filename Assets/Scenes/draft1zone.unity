@@ -966,7 +966,8 @@ GameObject:
   - component: {fileID: 15597279}
   - component: {fileID: 15597276}
   - component: {fileID: 15597274}
-  m_Layer: 0
+  - component: {fileID: 15597280}
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1118,6 +1119,25 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!232 &15597280
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15597273}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 8.964531
+  m_MaxDistanceOnly: 1
 --- !u!1 &18103216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1847,6 @@ GameObject:
   - component: {fileID: 126077840}
   - component: {fileID: 126077839}
   - component: {fileID: 126077838}
-  - component: {fileID: 126077837}
   - component: {fileID: 126077836}
   - component: {fileID: 126077835}
   - component: {fileID: 126077834}
@@ -1904,22 +1923,6 @@ MonoBehaviour:
   left: 0
   right: 0
   down: 1
---- !u!114 &126077837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126077832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8564f267144509c4895b3ec9a6e5d4c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lerpTime: 0
-  myColors:
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 1}
 --- !u!19719996 &126077838
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -8484,6 +8487,50 @@ MonoBehaviour:
   left: 0
   right: 0
   down: 0
+--- !u!1 &1257578027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1257578029}
+  - component: {fileID: 1257578028}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1257578028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257578027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44c25b4f8160ec419199aa23dd84be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
+--- !u!4 &1257578029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257578027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.204198, y: -4.0301466, z: -9.8984375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1264433630
 GameObject:
   m_ObjectHideFlags: 0
@@ -9550,7 +9597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468843017}
   - component: {fileID: 1468843018}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: arrow
   m_TagString: InvisibleOnJump
   m_Icon: {fileID: 0}
@@ -10925,7 +10972,6 @@ GameObject:
   - component: {fileID: 1640774694}
   - component: {fileID: 1640774693}
   - component: {fileID: 1640774692}
-  - component: {fileID: 1640774695}
   - component: {fileID: 1640774691}
   - component: {fileID: 1640774690}
   - component: {fileID: 1640774696}
@@ -10979,12 +11025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362ecfe1e1459bc4dbe1cf8f9ad6d1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: 0
+  dir: 1
   hitTimer: 0
   up: 0
   left: 0
   right: 0
-  down: 0
+  down: 1
 --- !u!19719996 &1640774692
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -11172,22 +11218,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1640774695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640774688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8564f267144509c4895b3ec9a6e5d4c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lerpTime: 0
-  myColors:
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &1640774696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13462,7 +13492,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 861bd5a0c136bfc448f0d317618935c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bf04944a5a588d4ca35723e45716c99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13482,7 +13512,7 @@ Transform:
   m_GameObject: {fileID: 1879587034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.299, y: -0.299, z: 0}
-  m_LocalScale: {x: 0.50248986, y: 0.50248986, z: 0.50248986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -14482,7 +14512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2028346878}
   - component: {fileID: 2028346879}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Marleysquat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

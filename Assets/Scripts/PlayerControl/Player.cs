@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
+    private DistanceJoint2D joint;
     public Animator animator;
     public DialogueManager DM;
     public GameObject platform;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        joint = GetComponent<DistanceJoint2D>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
         DM = FindObjectOfType<DialogueManager>();
@@ -43,18 +45,27 @@ public class Player : MonoBehaviour
     {
         timer -= 0.01f;
         transform.rotation = rot;
-        if (Input.GetMouseButtonDown(0))
-        {
+
+        if (Input.GetMouseButtonDown(0)){
             Debug.Log("Pressed left click.");
 
             timer = 0.04f;
         }
-        if(Input.GetMouseButtonDown(0))
-
-        if(Input.GetMouseButtonDown(1))
+        else if(Input.GetMouseButtonDown(1)){
           Debug.Log("Pressed right click.");
-        if(Input.GetMouseButtonDown(2))
+          Debug.Log("mouse click position: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
+          joint
+
+
+          //Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.green);
+          //RaycastHit2D hit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+          //Debug.Log("x: " + hit.transform.position.x + ", y: " + hit.transform.position.y + ", z: " + hit.transform.position.z );
+        }
+        else if(Input.GetMouseButtonDown(2)){
           Debug.Log("Pressed middle click.");
+        }
+
+
 
         float movement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 

@@ -29,7 +29,9 @@ public class DialogueManager : MonoBehaviour
       foreach (string sentence in dialogue.sentences){
         sentences.Enqueue(sentence);
       }
-      DisplayNextSentence();
+        SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        s.PlaySound("Whoosh", false);
+        DisplayNextSentence();
     }
 
     public void DisplayNextSentence(){

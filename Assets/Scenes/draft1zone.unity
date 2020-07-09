@@ -8532,6 +8532,13 @@ MonoBehaviour:
     delay: 40
     loop: 1
     source: {fileID: 0}
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: c0b9e803501d2b34d9f44964fcd556e7, type: 3}
+    volume: 0.135
+    pitch: 1
+    delay: 0.3
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1257578029
 Transform:
   m_ObjectHideFlags: 0

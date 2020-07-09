@@ -70,8 +70,6 @@ public class Platform : MonoBehaviour
     }
 
     bool directionHit(Direction d){
-
-        RaycastHit2D hit;
         switch (d)
         {
             case Direction.up:

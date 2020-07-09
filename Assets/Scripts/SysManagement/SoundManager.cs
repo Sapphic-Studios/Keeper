@@ -16,8 +16,9 @@ public class SoundManager : MonoBehaviour
         soundTimerDictionary = new Dictionary<Sound, float>();
         foreach (Sound s in sounds)
         {    
-            soundTimerDictionary[s] = 0f; 
+            soundTimerDictionary[s] = -1000f; 
         }
+        PlaySound("Drone", false);
     }
     private void Update()
     {
@@ -52,10 +53,12 @@ public class SoundManager : MonoBehaviour
         audio.clip = s.clip;
         audio.volume = s.volume;
         audio.pitch = s.pitch;
+        audio.loop = s.loop;
         audio.Play();
         soundTimerDictionary[s] = Time.time;
         //s.source.Play();
-        UnityEngine.Object.Destroy(obj, audio.clip.length);
+        if(!audio.loop)
+            UnityEngine.Object.Destroy(obj, audio.clip.length);
     }
     // Start is called before the first frame update
     public void PlaySound(string name, bool oneShot)

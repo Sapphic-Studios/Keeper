@@ -16,6 +16,8 @@ public class Sound
 
     public float delay;
 
+    public bool loop;
+
     [HideInInspector]
     public AudioSource source;
 

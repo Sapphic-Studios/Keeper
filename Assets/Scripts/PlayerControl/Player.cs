@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public bool grounded;
     public CapsuleCollider2D coll;
     float extra = .1f;
+    SoundManager sound;
     [SerializeField] public LayerMask platformLayer;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CapsuleCollider2D>();
         DM = FindObjectOfType<DialogueManager>();
+        sound = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     void Update()
@@ -70,7 +72,11 @@ public class Player : MonoBehaviour
             }
 
             //Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
-
+            if (movement != 0)
+            {
+                sound.PlaySound("Step");
+                animator.SetBool("walking", true);
+            }
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
             switch (Mathf.RoundToInt(transform.rotation.eulerAngles.z))
             {

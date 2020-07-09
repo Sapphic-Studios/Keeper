@@ -9,6 +9,7 @@ public class Collect : MonoBehaviour
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
+
     }
 
     // Update is called once per frame
@@ -21,6 +22,8 @@ public class Collect : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             GameManager.GetComponent<GameManager>().CountUpdate(1);
+            SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+            s.PlaySound("CollectChain", true);
             Destroy(gameObject);
         }
 

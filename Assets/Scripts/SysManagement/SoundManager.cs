@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
             soundTimerDictionary[s] = -1000f; 
         }
         PlaySound("Drone", false);
+        PlaySound("Die", false);
     }
     private void Update()
     {

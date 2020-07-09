@@ -8539,6 +8539,13 @@ MonoBehaviour:
     delay: 0.3
     loop: 0
     source: {fileID: 0}
+  - name: CollectChain
+    clip: {fileID: 8300000, guid: dbc2631cf1aaceb4092def6b609e1a0e, type: 3}
+    volume: 0.135
+    pitch: 1
+    delay: 0.3
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1257578029
 Transform:
   m_ObjectHideFlags: 0

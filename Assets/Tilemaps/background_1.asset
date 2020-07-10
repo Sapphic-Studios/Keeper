@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: bgspritesheet_3
+  m_Name: background_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 6747747452751177517, guid: cc0b46cd91bb58b4a960afeb728c69e3,
+  m_Sprite: {fileID: -3192133289119773823, guid: 862f6add62c970741b5f8a85a1bf317b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:

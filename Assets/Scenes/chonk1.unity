@@ -614,6 +614,7 @@ MonoBehaviour:
   timer: 0
   grounded: 0
   coll: {fileID: 0}
+  sound: {fileID: 0}
   platformLayer:
     serializedVersion: 2
     m_Bits: 256

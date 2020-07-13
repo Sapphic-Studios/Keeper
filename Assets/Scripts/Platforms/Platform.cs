@@ -13,11 +13,12 @@ public class Platform : MonoBehaviour
     public enum Direction {up,down,left,right};
     public Direction dir;
     Vector3 euler;
-    Quaternion rot;
+    public Quaternion rot;
     public float hitTimer;
     public bool up, left, right, down;
     RaycastHit2D raycast;
-    Ray2D rayUp, rayDown, rayLeft, rayRight;
+    RaycastHit2D rayUp, rayDown, rayLeft, rayRight;
+    //Ray2D rayUp, rayDown, rayLeft, rayRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,50 +90,67 @@ public class Platform : MonoBehaviour
         return raycast.collider != null;
 
     }
+
+    Direction getDirection()
+    {
+
+        rayUp = Physics2D.Raycast(script.coll.bounds.center, -Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+
+        rayRight = Physics2D.Raycast(script.coll.bounds.center, -Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+
+
+        rayDown = Physics2D.Raycast(script.coll.bounds.center, Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+
+        rayLeft = Physics2D.Raycast(script.coll.bounds.center, Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+
+        if (rayUp.collider != null) return Direction.up;
+        if (rayRight.collider != null) return Direction.right;
+        if (rayDown.collider != null) return Direction.down;
+        if (rayLeft.collider != null) return Direction.left;
+        //Debug.Log(raycast.collider);
+        return Direction.right;
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("hit");
+        Debug.Log("hit");
 
         if (collision.gameObject.tag == "Player")
         {
-            
             script.platform = this.gameObject;
-            rayUp = new Ray2D(player.transform.position, Vector3.up);
-            rayDown = new Ray2D(player.transform.position, Vector3.down);
-            rayLeft = new Ray2D(player.transform.position, Vector3.left);
-            rayRight = new Ray2D(player.transform.position, Vector3.right);
 
             hitTimer = 0.2f;
             //script.grounded = true;
-
-
+            Debug.Log(getDirection());
+            switch (getDirection())
+            {
+                case Direction.up:
+                    rot = Quaternion.Euler(0, 0, 0);
+                    break;
+                case Direction.right:
+                    rot = Quaternion.Euler(0, 0, 270);
+                    break;
+                case Direction.down:
+                    rot = Quaternion.Euler(0, 0, 180);
+                    break;
+                case Direction.left:
+                    rot = Quaternion.Euler(0, 0, 90);
+                    break;
+            }
 
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             int angle = (int)euler.z;
+            script.sound.PlaySound("Step", true);
+            rb.velocity = new Vector2(0f, 0f);
+            script.rot = rot;
             //rb.velocity = new Vector2(0f, 0f); script.rot = rot;
+            /*
             if (directionHit(dir))
             {
                 script.sound.PlaySound("Step", true);
                 rb.velocity = new Vector2(0f, 0f);
                 script.rot = rot;
-            }
-
-            switch (angle)
-            {
-                case 0: //Ground
-                    //Debug.Log("On Ground");
-                    //player.transform.position = new Vector3(player.transform.position.x,this.transform.position.y, player.transform.position.z);
-                    break;
-                case 90: //Left facing wall
-                    //Debug.Log("On Left Wall");
-                    break;
-                case 180: //Ceiling
-                    //Debug.Log("On Ceiling");
-                    break;
-                case 270: //Right facing wall
-                    //Debug.Log("On Right Wall");
-                    break;
-            }
+            }*/
         }
     }
 

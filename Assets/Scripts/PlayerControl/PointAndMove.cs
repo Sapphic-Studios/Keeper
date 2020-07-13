@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class PointAndMove : MonoBehaviour
     public GameObject player;
     public GameObject arrow;
     Player script;
-    public float speed = 10.0f;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,8 @@ public class PointAndMove : MonoBehaviour
         Vector3 difference = target - player.transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90f;
         arrow.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ+90f);
+        float dist = Vector2.Distance(target, player.transform.position);
+        speed = Mathf.Clamp( dist+3, 5.0f,10.0f);
 
 
         if (Input.GetMouseButtonDown(0))

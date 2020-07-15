@@ -1,0 +1,10 @@
+A DialogueManager must be present in the scene.
+
+
+To create an interactable object with dialgoue:
+
+* create an object, likely a sprite
+* the object must have the following scripts
+--- Collider 2D     -> set isTrigger to TRUE, aka check it off
+--- DialogueTrigger, this is where you write the dialogue, it communicates with the dialogue manager
+--- Interactable -> drag your dialoguetrigger into the DT field

@@ -38,6 +38,11 @@ public class Player : MonoBehaviour
       if(Input.GetKeyDown("z")){
           DM.DisplayNextSentence();
       }
+
+      if(Input.GetKeyDown("e")){
+        //interact();
+      }
+
     }
 
     // Update is called once per frame
@@ -243,9 +248,10 @@ public class Player : MonoBehaviour
         Debug.DrawRay(shift, -transform.up * Mathf.Max(coll.bounds.extents.x, coll.bounds.extents.y), rayColor);
         return raycast.collider == null;
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-       
+
     }
 
 }

@@ -115,7 +115,7 @@ public class Platform : MonoBehaviour
     {
         Debug.Log("hit");
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && script.timer<0)
         {
             script.platform = this.gameObject;
 

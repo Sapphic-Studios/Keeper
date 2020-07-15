@@ -8,3 +8,5 @@ To create an interactable object with dialgoue:
 --- Collider 2D     -> set isTrigger to TRUE, aka check it off
 --- DialogueTrigger, this is where you write the dialogue, it communicates with the dialogue manager
 --- Interactable -> drag your dialoguetrigger into the DT field
+
+z advances dialogue

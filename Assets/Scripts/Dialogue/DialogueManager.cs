@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 
     public Text nameText;
     public Text dialogueText;
+    private Queue<string> names;
     private Queue<string> sentences;
 
     public Animator animator;
@@ -15,23 +16,27 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      names = new Queue<string>();
       sentences = new Queue<string>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-      Debug.Log("Starting conversation with "  + dialogue.name);
+      Debug.Log("Starting conversation with "  + dialogue.name[0]);
       animator.SetBool("OnScreen", true);
-      nameText.text = dialogue.name;
+      nameText.text = dialogue.name[0];
 
       sentences.Clear();
       //fills queue with sentences from dialogue
       foreach (string sentence in dialogue.sentences){
         sentences.Enqueue(sentence);
       }
-        SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-        s.PlaySound("Whoosh", false);
-        DisplayNextSentence();
+      foreach (string name in dialogue.name){
+        names.Enqueue(name);
+      }
+      SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+      s.PlaySound("Whoosh", false);
+      DisplayNextSentence();
     }
 
     public void DisplayNextSentence(){
@@ -39,6 +44,12 @@ public class DialogueManager : MonoBehaviour
           EndDialogue();
           return;
       }
+      if(names.Count !=0 ){
+        string name = names.Dequeue();
+        nameText.text = name;
+      }
+
+
       string sentence = sentences.Dequeue();
       Debug.Log(sentence);
       StopAllCoroutines();

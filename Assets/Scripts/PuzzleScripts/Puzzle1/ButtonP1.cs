@@ -13,7 +13,7 @@ public class ButtonP1 : MonoBehaviour
     [SerializeField]
     private Sprite offsprite;
     //-------------
-    private Collision2D playercollission;
+    private Collider2D playercollission;
     public bool touchingplayer = false;
     private float t = 0f;
 
@@ -39,7 +39,7 @@ public class ButtonP1 : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collision2D collision){
+    private void OnTriggerEnter2D(Collider2D collision){
       Debug.Log("IT WAS TOUCHED");
       if (collision.gameObject.tag == "Player"){
         touchingplayer = true;
@@ -47,7 +47,7 @@ public class ButtonP1 : MonoBehaviour
       }
     }
 
-    private void  OnTriggerExit2D(Collision2D collision)
+    private void  OnTriggerExit2D(Collider2D collision)
     {
       Debug.Log("IT WAS LEFT");
       if (collision.gameObject.tag == "Player"){

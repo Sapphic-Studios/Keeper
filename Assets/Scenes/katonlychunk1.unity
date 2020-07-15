@@ -1921,8 +1921,8 @@ GameObject:
   m_Component:
   - component: {fileID: 757537449}
   - component: {fileID: 757537450}
-  - component: {fileID: 757537451}
   - component: {fileID: 757537452}
+  - component: {fileID: 757537451}
   m_Layer: 0
   m_Name: Button 1
   m_TagString: Untagged
@@ -18689,7 +18689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.018364226, y: 0.17500001}
   m_AnchorMax: {x: 0.13432652, y: 0.22813044}
-  m_AnchoredPosition: {x: 1.0117493, y: -2.8477783}
+  m_AnchoredPosition: {x: 1.0117493, y: -2.847786}
   m_SizeDelta: {x: 7.4936523, y: 3.9767532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948363001
@@ -18705,7 +18705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: PogSauce
+    name: []
     sentences:
     - hello bitch
     - it is i the horrible progress
@@ -19380,7 +19380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
+    name: []
     sentences: []
 --- !u!114 &1198139148
 MonoBehaviour:
@@ -19585,11 +19585,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Pog
+    name:
+    - Proxos
+    - Poggers
+    - Pingo
     sentences:
-    - hello
-    - bongo
-    - poggers
+    - hope this works
+    - hope this works
+    - hope this works
 --- !u!61 &1260825561
 BoxCollider2D:
   m_ObjectHideFlags: 0

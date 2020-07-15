@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6960557992129404247}
   - component: {fileID: 5188809987601411794}
   - component: {fileID: 1419041554010299970}
+  - component: {fileID: 3856127337054565140}
   m_Layer: 0
   m_Name: whale shadow 3
   m_TagString: Untagged
@@ -296,3 +297,15 @@ PolygonCollider2D:
       - {x: -0.42999998, y: 0.815}
       - {x: -0.45999998, y: 0.78499997}
       - {x: -0.45, y: 0.78499997}
+--- !u!114 &3856127337054565140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267925566343622795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d24b5c540f6823429d44ba6a4708b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

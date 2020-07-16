@@ -9,6 +9,8 @@ public class DoorP1 : MonoBehaviour
     public ButtonP1[] BUTTONS;
     [SerializeField]
     public bool[] PATTERN;
+    [SerializeField]
+    public string objectname;
 //--------------------------------
     private bool isCorrect = true;
     private bool unlocked = false;
@@ -33,7 +35,7 @@ public class DoorP1 : MonoBehaviour
         }
 
         if(isCorrect){
-          GameObject.Find("DOORBAD").SetActive(false);
+          GameObject.Find(objectname).SetActive(false);
           unlocked=true;
         }
 

@@ -1521,7 +1521,6 @@ GameObject:
   - component: {fileID: 527078205}
   - component: {fileID: 527078207}
   - component: {fileID: 527078206}
-  - component: {fileID: 527078208}
   m_Layer: 0
   m_Name: DOORBAD
   m_TagString: Untagged
@@ -1631,25 +1630,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.73, y: 1.26}
   m_EdgeRadius: 0
---- !u!114 &527078208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527078203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98c380a4e0576641882f71a29e22c61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BUTTONS:
-  - {fileID: 757537451}
-  - {fileID: 356785535}
-  - {fileID: 1488418328}
-  - {fileID: 123398689}
-  - {fileID: 383093227}
-  PATTERN: 0001000100
 --- !u!1 &551091298
 GameObject:
   m_ObjectHideFlags: 0
@@ -19234,6 +19214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087103481}
   - component: {fileID: 1087103480}
+  - component: {fileID: 1087103482}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -19268,6 +19249,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087103482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087103479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98c380a4e0576641882f71a29e22c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BUTTONS:
+  - {fileID: 757537451}
+  - {fileID: 356785535}
+  - {fileID: 1488418328}
+  - {fileID: 123398689}
+  - {fileID: 383093227}
+  PATTERN: 0001000100
+  objectname: DOORBAD
 --- !u!1 &1195240069
 GameObject:
   m_ObjectHideFlags: 0

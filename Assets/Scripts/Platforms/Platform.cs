@@ -9,7 +9,7 @@ public class Platform : MonoBehaviour
     GameObject player;
     Player script;
     Rigidbody2D rb;
-    TilemapCollider2D collider;
+    TilemapCollider2D coll;
     public enum Direction {up,down,left,right};
     public Direction dir;
     Vector3 euler;
@@ -17,7 +17,8 @@ public class Platform : MonoBehaviour
     public float hitTimer;
     public bool up, left, right, down;
     RaycastHit2D raycast;
-    RaycastHit2D rayUp, rayDown, rayLeft, rayRight;
+    RaycastHit2D rayUp, rayDown, rayLeft, rayRight, rayWup, rayWdown, rayWleft, rayWright, right45, left45;
+    Vector3 pos;
     //Ray2D rayUp, rayDown, rayLeft, rayRight;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class Platform : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         script = player.GetComponent<Player>();
         rb = player.GetComponent<Rigidbody2D>();
-        collider = GetComponent<TilemapCollider2D>();
+        coll = GetComponent<TilemapCollider2D>();
 
 
 
@@ -56,6 +57,7 @@ public class Platform : MonoBehaviour
     void FixedUpdate()
     {
         hitTimer -= 0.01f;
+        dir = getDirection();
         if (script.grounded)
         {
             /*
@@ -88,37 +90,99 @@ public class Platform : MonoBehaviour
         }
         //Debug.Log(raycast.collider);
         return raycast.collider != null;
-
     }
 
     Direction getDirection()
     {
+        float extend = .1f;
+        float extra = 1f;
+        rayUp = Physics2D.Raycast(script.coll.bounds.center, -Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + extend, script.platformLayer);
+        rayRight = Physics2D.Raycast(script.coll.bounds.center, -Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + extend, script.platformLayer);
+        rayDown = Physics2D.Raycast(script.coll.bounds.center, Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + extend, script.platformLayer);
+        rayLeft = Physics2D.Raycast(script.coll.bounds.center, Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + extend, script.platformLayer);
 
-        rayUp = Physics2D.Raycast(script.coll.bounds.center, -Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+        Color rayColor = Color.red;
+        if (rayUp.collider != null) rayColor = Color.green; 
+        if (rayRight.collider != null) rayColor = Color.green; 
+        if (rayDown.collider != null) rayColor = Color.green; 
+        if (rayLeft.collider != null) rayColor = Color.green; 
 
-        rayRight = Physics2D.Raycast(script.coll.bounds.center, -Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
-
-
-        rayDown = Physics2D.Raycast(script.coll.bounds.center, Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
-
-        rayLeft = Physics2D.Raycast(script.coll.bounds.center, Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
-
-        if (rayUp.collider != null) return Direction.up;
+        Debug.DrawRay(script.coll.bounds.center, -Vector3.up * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        Debug.DrawRay(script.coll.bounds.center, -Vector3.right * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        Debug.DrawRay(script.coll.bounds.center, Vector3.up * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        Debug.DrawRay(script.coll.bounds.center, Vector3.right * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        if (rayUp.collider != null)  return Direction.up;
         if (rayRight.collider != null) return Direction.right;
         if (rayDown.collider != null) return Direction.down;
         if (rayLeft.collider != null) return Direction.left;
-        //Debug.Log(raycast.collider);
-        return Direction.right;
+
+         right45 = Physics2D.Raycast(script.coll.bounds.center + new Vector3(0f, script.coll.bounds.extents.y), Vector3.up,  extend, script.platformLayer);
+        left45 = Physics2D.Raycast(script.coll.bounds.center + new Vector3(0f, script.coll.bounds.extents.y), (Vector3.forward - Vector3.right).normalized, extra, script.platformLayer);
+        if (right45.collider != null) rayColor = Color.green;
+        if (left45.collider != null) rayColor = Color.green;
+
+        Debug.DrawRay(coll.bounds.center, player.transform.forward + player.transform.right * extra, rayColor);
+        Debug.DrawRay(coll.bounds.center, player.transform.forward + player.transform.right * extra, rayColor);
+
+        if (script.velocity.x > 0 && script.velocity.y > 0 && right45.collider == null && left45.collider != null) return Direction.down;
+        if (script.velocity.x > 0 && script.velocity.y > 0 && right45.collider != null && left45.collider == null) return Direction.left;
+        if (script.velocity.x > 0 && script.velocity.y < 0 && right45.collider == null && left45.collider != null) return Direction.left;
+        if (script.velocity.x > 0 && script.velocity.y < 0 && right45.collider != null && left45.collider == null) return Direction.up;
+        if (script.velocity.x < 0 && script.velocity.y < 0 && right45.collider == null && left45.collider != null) return Direction.up;
+        if (script.velocity.x < 0 && script.velocity.y < 0 && right45.collider != null && left45.collider == null) return Direction.right;
+        if (script.velocity.x < 0 && script.velocity.y > 0 && right45.collider == null && left45.collider != null) return Direction.right;
+        if (script.velocity.x < 0 && script.velocity.y > 0 && right45.collider != null && left45.collider == null) return Direction.down;
+        /*
+        Vector3 shift = new Vector3(0, 0, 0);
+        shift = script.coll.bounds.center + new Vector3(2f, 2f);
+        rayWup = Physics2D.Raycast(shift, -Vector3.right, 4f, script.platformLayer);
+        Debug.DrawRay(shift, -Vector3.right * 4f, rayColor);
+
+        shift = script.coll.bounds.center + new Vector3(2f, -2f);
+        rayWright = Physics2D.Raycast(shift, Vector3.up, 4f, script.platformLayer);
+        Debug.DrawRay(shift, Vector3.up * 4f, rayColor);
+
+        shift = script.coll.bounds.center + new Vector3(-2f, -2f);
+        rayWdown = Physics2D.Raycast(shift, Vector3.right, 4f, script.platformLayer);
+        Debug.DrawRay(shift, Vector3.right * 4f, rayColor);
+
+        shift = script.coll.bounds.center + new Vector3(-2f, 2f);
+        rayWleft = Physics2D.Raycast(shift, -Vector3.up, 4f, script.platformLayer);
+        Debug.DrawRay(shift, -Vector3.up * 4f, rayColor);
+        if (rayWup.collider != null || rayWright.collider != null || rayWdown.collider != null || rayWleft.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        if (rayWup.collider != null) return Direction.up;
+        if (rayWright.collider != null) return Direction.right;
+        if (rayWdown.collider != null) return Direction.down;
+        if (rayWleft.collider != null) return Direction.left;
+
+        //player.transform.position = pos;
+        //Debug.Log(raycast.collider);*/
+        return Direction.up;
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("hit");
 
-        if (collision.gameObject.tag == "Player" && script.timer<0)
+        if (collision.gameObject.tag == "Player")
         {
             script.platform = this.gameObject;
 
+            ContactPoint2D contact = collision.contacts[0];
+            Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
+            pos = contact.point;
+            //player.transform.position = pos;
+            Vector3 dir = player.transform.position - transform.position;
+            dir = player.transform.InverseTransformDirection(dir);
+            float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            script.angle = ang;
             hitTimer = 0.2f;
             //script.grounded = true;
             Debug.Log(getDirection());
@@ -142,6 +206,7 @@ public class Platform : MonoBehaviour
             int angle = (int)euler.z;
             script.sound.PlaySound("Step", true);
             rb.velocity = new Vector2(0f, 0f);
+            
             script.rot = rot;
             //rb.velocity = new Vector2(0f, 0f); script.rot = rot;
             /*

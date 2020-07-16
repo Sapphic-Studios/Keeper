@@ -31,7 +31,7 @@ public class PointAndMove : MonoBehaviour
         speed = Mathf.Clamp( dist+3, 5.0f,10.0f);
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && player.GetComponent<Rigidbody2D>().velocity.x ==0)
         {
             if (!badAngle())
             {
@@ -75,5 +75,6 @@ public class PointAndMove : MonoBehaviour
         //player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         script.rot = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         player.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        script.velocity = player.GetComponent<Rigidbody2D>().velocity;
     }
 }

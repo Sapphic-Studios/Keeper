@@ -17,7 +17,9 @@ public class Player : MonoBehaviour
     public bool grounded;
     public CapsuleCollider2D coll;
     float extra = .1f;
+    public Vector3 velocity;
     public SoundManager sound;
+    public float angle;
     [SerializeField] public LayerMask platformLayer;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
     {
       animator.SetFloat("speed", Mathf.Abs((rb.velocity.x + rb.velocity.y)));
       animator.SetBool("grounded", IsGrounded() );
-      animator.SetBool("walking", false);
+      animator.SetBool("walking", Input.GetKeyDown("left") || Input.GetKeyDown("a") || Input.GetKeyDown("right") || Input.GetKeyDown("d"));
       //handles advancing dialogue via DialogueManager
       if(Input.GetKeyDown("z")){
           DM.DisplayNextSentence();
@@ -53,8 +55,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)){
             Debug.Log("Pressed left click.");
-
-            timer = 0.04f;
+            timer = 0.05f;
         }
         else if(Input.GetMouseButtonDown(1)){
           Debug.Log("Pressed right click.");
@@ -68,8 +69,6 @@ public class Player : MonoBehaviour
         else if(Input.GetMouseButtonDown(2)){
           Debug.Log("Pressed middle click.");
         }
-
-
 
         float movement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 

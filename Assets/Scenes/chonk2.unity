@@ -611,7 +611,9 @@ MonoBehaviour:
   timer: 0
   grounded: 0
   coll: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
   sound: {fileID: 0}
+  angle: 0
   platformLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -996,6 +998,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90761905}
   m_CullTransparentMesh: 0
+--- !u!1 &157826649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157826651}
+  - component: {fileID: 157826650}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &157826650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157826649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44c25b4f8160ec419199aa23dd84be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Step
+    clip: {fileID: 8300000, guid: 1e1b8888a638de84f81758fddd61bdf8, type: 3}
+    volume: 0.178
+    pitch: 1
+    delay: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Drone
+    clip: {fileID: 8300000, guid: 2aad85c669334054889c741341292bc5, type: 3}
+    volume: 0.308
+    pitch: 1
+    delay: 40
+    loop: 1
+    source: {fileID: 0}
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: c0b9e803501d2b34d9f44964fcd556e7, type: 3}
+    volume: 0.135
+    pitch: 1
+    delay: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: CollectChain
+    clip: {fileID: 8300000, guid: dbc2631cf1aaceb4092def6b609e1a0e, type: 3}
+    volume: 0.135
+    pitch: 1
+    delay: 0.3
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &157826651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157826649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.204198, y: -4.0301466, z: -9.8984375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &166072248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,9 +1289,9 @@ GameObject:
   - component: {fileID: 256394922}
   - component: {fileID: 256394926}
   - component: {fileID: 256394925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Moving Platforms
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1551,9 +1625,9 @@ GameObject:
   - component: {fileID: 275853879}
   - component: {fileID: 275853881}
   - component: {fileID: 275853882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boundary
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84294,7 +84368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740536793}
   - component: {fileID: 740536792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85683,7 +85757,7 @@ GameObject:
   - component: {fileID: 1232223287}
   - component: {fileID: 1232223286}
   - component: {fileID: 1232223285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PUZZLE DOOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105702,9 +105776,9 @@ GameObject:
   - component: {fileID: 1837919008}
   - component: {fileID: 1837919010}
   - component: {fileID: 1837919011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platforms
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

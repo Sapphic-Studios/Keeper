@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
@@ -116,13 +117,13 @@ public class Platform : MonoBehaviour
         if (rayDown.collider != null) return Direction.down;
         if (rayLeft.collider != null) return Direction.left;
 
-         right45 = Physics2D.Raycast(script.coll.bounds.center + new Vector3(0f, script.coll.bounds.extents.y), Vector3.up,  extend, script.platformLayer);
-        left45 = Physics2D.Raycast(script.coll.bounds.center + new Vector3(0f, script.coll.bounds.extents.y), (Vector3.forward - Vector3.right).normalized, extra, script.platformLayer);
+         right45 = Physics2D.Raycast(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized, extra, script.platformLayer);
+        left45 = Physics2D.Raycast(script.coll.bounds.center + player.transform.up, (player.transform.up - player.transform.right).normalized, extra, script.platformLayer);
         if (right45.collider != null) rayColor = Color.green;
         if (left45.collider != null) rayColor = Color.green;
 
-        Debug.DrawRay(coll.bounds.center, player.transform.forward + player.transform.right * extra, rayColor);
-        Debug.DrawRay(coll.bounds.center, player.transform.forward + player.transform.right * extra, rayColor);
+        Debug.DrawRay(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized * extra, rayColor);
+        Debug.DrawRay(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized * extra, rayColor);
 
         if (script.velocity.x > 0 && script.velocity.y > 0 && right45.collider == null && left45.collider != null) return Direction.down;
         if (script.velocity.x > 0 && script.velocity.y > 0 && right45.collider != null && left45.collider == null) return Direction.left;

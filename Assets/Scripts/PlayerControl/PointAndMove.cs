@@ -28,7 +28,7 @@ public class PointAndMove : MonoBehaviour
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90f;
         arrow.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ+90f);
         float dist = Vector2.Distance(target, player.transform.position);
-        speed = Mathf.Clamp( dist+3, 5.0f,10.0f);
+        speed = Mathf.Clamp( dist+3, 5.0f,8.0f);
 
 
         if (Input.GetMouseButtonDown(0) && player.GetComponent<Rigidbody2D>().velocity.x ==0)

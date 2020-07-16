@@ -37,6 +37,8 @@ public class DoorP1 : MonoBehaviour
         if(isCorrect){
           GameObject.Find(objectname).SetActive(false);
           unlocked=true;
+          SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+          s.PlaySound("Door", false);
         }
 
       }

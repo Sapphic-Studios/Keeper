@@ -2704,6 +2704,20 @@ MonoBehaviour:
     delay: 0.3
     loop: 0
     source: {fileID: 0}
+  - name: Light
+    clip: {fileID: 8300000, guid: d32b0760424520b4d96615fbff09a502, type: 3}
+    volume: 0.219
+    pitch: 1
+    delay: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: Door
+    clip: {fileID: 8300000, guid: 3abc41146f9e70546b048fed017d0bfa, type: 3}
+    volume: 0.234
+    pitch: 1
+    delay: 0.3
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &760872014
 Transform:
   m_ObjectHideFlags: 0

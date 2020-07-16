@@ -33,7 +33,7 @@ public class PointAndMove : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && player.GetComponent<Rigidbody2D>().velocity.x ==0)
         {
-            if (!badAngle())
+            if (!badAngle() )
             {
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;

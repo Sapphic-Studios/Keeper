@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -20,6 +19,7 @@ public class Player : MonoBehaviour
     public Vector3 velocity;
     public SoundManager sound;
     public float angle;
+    Collider2D col;
     [SerializeField] public LayerMask platformLayer;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         coll = GetComponent<CapsuleCollider2D>();
         DM = FindObjectOfType<DialogueManager>();
         sound = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        col = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -52,10 +53,15 @@ public class Player : MonoBehaviour
     {
         timer -= 0.01f;
         transform.rotation = rot;
-
+        
         if (Input.GetMouseButtonDown(0)){
             Debug.Log("Pressed left click.");
+            //col.enabled = false;
             timer = 0.05f;
+        }
+        if (timer <= 0)
+        {
+            //col.enabled = true;
         }
         else if(Input.GetMouseButtonDown(1)){
           Debug.Log("Pressed right click.");

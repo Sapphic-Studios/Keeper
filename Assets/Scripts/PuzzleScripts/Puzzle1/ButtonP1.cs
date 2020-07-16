@@ -15,7 +15,7 @@ public class ButtonP1 : MonoBehaviour
     //-------------
     private Collider2D playercollission;
     public bool touchingplayer = false;
-    private float t = 0f;
+    private float t = 2f;
 
 
 
@@ -30,9 +30,13 @@ public class ButtonP1 : MonoBehaviour
     void Update()
     {
       t = t + Time.deltaTime;
-      if(Input.GetKeyDown("e") && touchingplayer && t >= 2){ //limit speed of touching switch
+      if(Input.GetKeyDown("e") && touchingplayer && t >= 1){ //limit speed of touching switch
         t = 0;
         on = !on;
+        if(on)
+         SR.sprite = onsprite;
+        else
+         SR.sprite = offsprite;
       }
 
 

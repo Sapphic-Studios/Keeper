@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03516806, y: 0.13687819}
   m_AnchorMax: {x: 0.9211681, y: 0.42400002}
-  m_AnchoredPosition: {x: 0.7790222, y: 0.22999954}
+  m_AnchoredPosition: {x: 0.7790222, y: 0.23000145}
   m_SizeDelta: {x: 1.5589905, y: 0.27910614}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7641716
@@ -361,7 +361,9 @@ MonoBehaviour:
   timer: 0
   grounded: 0
   coll: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
   sound: {fileID: 0}
+  angle: 0
   platformLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -688,8 +690,8 @@ GameObject:
   m_Component:
   - component: {fileID: 123398687}
   - component: {fileID: 123398688}
-  - component: {fileID: 123398689}
   - component: {fileID: 123398690}
+  - component: {fileID: 123398689}
   m_Layer: 0
   m_Name: Button 4
   m_TagString: Untagged
@@ -976,8 +978,8 @@ GameObject:
   m_Component:
   - component: {fileID: 356785533}
   - component: {fileID: 356785534}
-  - component: {fileID: 356785535}
   - component: {fileID: 356785536}
+  - component: {fileID: 356785535}
   m_Layer: 0
   m_Name: Button 2
   m_TagString: Untagged
@@ -1102,8 +1104,8 @@ GameObject:
   m_Component:
   - component: {fileID: 383093225}
   - component: {fileID: 383093226}
-  - component: {fileID: 383093227}
   - component: {fileID: 383093228}
+  - component: {fileID: 383093227}
   m_Layer: 0
   m_Name: Button 5
   m_TagString: Untagged
@@ -1517,8 +1519,9 @@ GameObject:
   m_Component:
   - component: {fileID: 527078204}
   - component: {fileID: 527078205}
-  - component: {fileID: 527078206}
   - component: {fileID: 527078207}
+  - component: {fileID: 527078206}
+  - component: {fileID: 527078208}
   m_Layer: 0
   m_Name: DOORBAD
   m_TagString: Untagged
@@ -1628,6 +1631,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.73, y: 1.26}
   m_EdgeRadius: 0
+--- !u!114 &527078208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527078203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98c380a4e0576641882f71a29e22c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BUTTONS:
+  - {fileID: 757537451}
+  - {fileID: 356785535}
+  - {fileID: 1488418328}
+  - {fileID: 123398689}
+  - {fileID: 383093227}
+  PATTERN: 0001000100
 --- !u!1 &551091298
 GameObject:
   m_ObjectHideFlags: 0
@@ -18689,7 +18711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.018364226, y: 0.17500001}
   m_AnchorMax: {x: 0.13432652, y: 0.22813044}
-  m_AnchoredPosition: {x: 1.0117493, y: -2.847786}
+  m_AnchoredPosition: {x: 1.0117493, y: -2.8477936}
   m_SizeDelta: {x: 7.4936523, y: 3.9767532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948363001
@@ -19364,7 +19386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.012241778, y: 0.09424638}
   m_AnchorMax: {x: 0.13432652, y: 0.14237683}
-  m_AnchoredPosition: {x: 3.9732819, y: -5.722687}
+  m_AnchoredPosition: {x: 3.973297, y: -5.722687}
   m_SizeDelta: {x: 7.4050293, y: 7.7475433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1198139147
@@ -83437,8 +83459,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1488418326}
   - component: {fileID: 1488418327}
-  - component: {fileID: 1488418328}
   - component: {fileID: 1488418329}
+  - component: {fileID: 1488418328}
   m_Layer: 0
   m_Name: Button 3
   m_TagString: Untagged

@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Hazard
   - Pause
+  - DoorP1
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ public class NextLevel : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("door");
         if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("chonk2");

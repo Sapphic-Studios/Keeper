@@ -24,14 +24,14 @@ public class DoorP2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (!unlocked){
+      /*if (!unlocked){
         isCorrect = true;
-        /*for(int i=0; i < BUTTONS.Length; i++){
+        for(int i=0; i < BUTTONS.Length; i++){
           Debug.Log(BUTTONS[i].on + " != " +PATTERN[i]);
           if(BUTTONS[i].on != PATTERN[i]){
 
             isCorrect = false;
-          }*/
+          }
         }
 
         if(isCorrect){
@@ -50,7 +50,7 @@ public class DoorP2 : MonoBehaviour
           }
       }
 
-
+      */
     }
 
 }

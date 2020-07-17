@@ -26,12 +26,12 @@ public class PlatformP2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
       if (collision.gameObject.tag == "Player"){
-        Door.AddtoArray(platformColor);
+        //Door.AddtoArray(platformColor);
       }
     }
 
     private void addtoDoorArray(){
-      Door.AddtoArray(platformColor);
+      //Door.AddtoArray(platformColor);
     }
 
 }

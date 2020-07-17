@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/chonk1.unity
     guid: 22e317b10047a0b41b54f91157fdf0b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/chonk2.unity
     guid: 39390636d10145f4ba2302a779e5f8c5
   m_configObjects: {}

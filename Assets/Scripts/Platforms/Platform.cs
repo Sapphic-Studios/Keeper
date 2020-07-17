@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -92,7 +91,22 @@ public class Platform : MonoBehaviour
         //Debug.Log(raycast.collider);
         return raycast.collider != null;
     }
-
+    void drawRays(float offset)
+    {
+        rayUp = Physics2D.Raycast(script.coll.bounds.center + new Vector3(0, offset), -Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + .1f, script.platformLayer);
+        rayRight = Physics2D.Raycast(script.coll.bounds.center + new Vector3(offset, 0), -Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + .1f, script.platformLayer);
+        rayDown = Physics2D.Raycast(script.coll.bounds.center + new Vector3(0, -offset), Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + .1f, script.platformLayer);
+        rayLeft = Physics2D.Raycast(script.coll.bounds.center + new Vector3(-offset, 0), Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + .1f, script.platformLayer);
+        Color rayColor = Color.red;
+        if (rayUp.collider != null) rayColor = Color.green;
+        if (rayRight.collider != null) rayColor = Color.green;
+        if (rayDown.collider != null) rayColor = Color.green;
+        if (rayLeft.collider != null) rayColor = Color.green;
+        Debug.DrawRay(script.coll.bounds.center + new Vector3(0, offset), -Vector3.up * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        Debug.DrawRay(script.coll.bounds.center + new Vector3(offset, 0), -Vector3.right * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        Debug.DrawRay(script.coll.bounds.center + new Vector3(0, -offset), Vector3.up * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+        Debug.DrawRay(script.coll.bounds.center + new Vector3(-offset, 0), Vector3.right * Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y), rayColor);
+    }
     Direction getDirection()
     {
         float extend = .1f;
@@ -116,14 +130,26 @@ public class Platform : MonoBehaviour
         if (rayRight.collider != null) return Direction.right;
         if (rayDown.collider != null) return Direction.down;
         if (rayLeft.collider != null) return Direction.left;
+        /*
+        drawRays(0.2f);
+        if (rayUp.collider != null) { player.transform.position = pos; return Direction.up; }
+        if (rayRight.collider != null) { player.transform.position = pos; return Direction.right; }
+        if (rayDown.collider != null) { player.transform.position = pos; return Direction.down; }
+        if (rayLeft.collider != null) { player.transform.position = pos; return Direction.left; }
 
-         right45 = Physics2D.Raycast(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized, extra, script.platformLayer);
+        drawRays(-0.2f);
+        if (rayUp.collider != null) { player.transform.position = pos; return Direction.up; }
+        if (rayRight.collider != null) { player.transform.position = pos; return Direction.right; }
+        if (rayDown.collider != null) { player.transform.position = pos; return Direction.down; }
+        if (rayLeft.collider != null) { player.transform.position = pos; return Direction.left; }*/
+
+        right45 = Physics2D.Raycast(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized, extra, script.platformLayer);
         left45 = Physics2D.Raycast(script.coll.bounds.center + player.transform.up, (player.transform.up - player.transform.right).normalized, extra, script.platformLayer);
         if (right45.collider != null) rayColor = Color.green;
         if (left45.collider != null) rayColor = Color.green;
 
         Debug.DrawRay(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized * extra, rayColor);
-        Debug.DrawRay(script.coll.bounds.center + player.transform.up, (player.transform.up + player.transform.right).normalized * extra, rayColor);
+        Debug.DrawRay(script.coll.bounds.center + player.transform.up, (player.transform.up - player.transform.right).normalized * extra, rayColor);
 
         if (script.velocity.x > 0 && script.velocity.y > 0 && right45.collider == null && left45.collider != null) return Direction.down;
         if (script.velocity.x > 0 && script.velocity.y > 0 && right45.collider != null && left45.collider == null) return Direction.left;
@@ -179,10 +205,10 @@ public class Platform : MonoBehaviour
             ContactPoint2D contact = collision.contacts[0];
             Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
             pos = contact.point;
-            //player.transform.position = pos;
-            Vector3 dir = player.transform.position - transform.position;
-            dir = player.transform.InverseTransformDirection(dir);
-            float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            
+            Vector3 direction = player.transform.position - transform.position;
+            direction = player.transform.InverseTransformDirection(direction);
+            float ang = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             script.angle = ang;
             hitTimer = 0.2f;
             //script.grounded = true;
@@ -191,23 +217,40 @@ public class Platform : MonoBehaviour
             {
                 case Direction.up:
                     rot = Quaternion.Euler(0, 0, 0);
+                    //if (rayUp.collider == null && rayRight.collider == null && rayDown.collider == null && rayLeft.collider == null) player.transform.position = new Vector2(pos.x, player.transform.position.y) ;
                     break;
                 case Direction.right:
                     rot = Quaternion.Euler(0, 0, 270);
+                    //if (rayUp.collider == null && rayRight.collider == null && rayDown.collider == null && rayLeft.collider == null) player.transform.position = new Vector2(player.transform.position.x,pos.y );
                     break;
                 case Direction.down:
                     rot = Quaternion.Euler(0, 0, 180);
+                    //if (rayUp.collider == null && rayRight.collider == null && rayDown.collider == null && rayLeft.collider == null) player.transform.position = new Vector2(pos.x, player.transform.position.y);
                     break;
                 case Direction.left:
                     rot = Quaternion.Euler(0, 0, 90);
+                    //if (rayUp.collider == null && rayRight.collider == null && rayDown.collider == null && rayLeft.collider == null) player.transform.position = new Vector2(player.transform.position.x, pos.y);
                     break;
             }
+            
+
+
 
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             int angle = (int)euler.z;
             script.sound.PlaySound("Step", true);
             rb.velocity = new Vector2(0f, 0f);
-            
+
+            //player.transform.rotation = rot;
+            /*
+            rayUp = Physics2D.Raycast(script.coll.bounds.center, -Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+            rayRight = Physics2D.Raycast(script.coll.bounds.center, -Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+            rayDown = Physics2D.Raycast(script.coll.bounds.center, Vector3.up, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+            rayLeft = Physics2D.Raycast(script.coll.bounds.center, Vector3.right, Mathf.Max(script.coll.bounds.extents.x, script.coll.bounds.extents.y) + 1f, script.platformLayer);
+            if (dir==Direction.up && rayDown.collider!=null) rot = Quaternion.Euler(0, 0, 180);
+            if (dir == Direction.down && rayDown.collider != null) rot = Quaternion.Euler(0, 0, 0);
+            if (dir == Direction.left && rayLeft.collider != null) rot = Quaternion.Euler(0, 0, 90);
+            if (dir == Direction.right && rayRight.collider != null) rot = Quaternion.Euler(0, 0, 270);*/
             script.rot = rot;
             //rb.velocity = new Vector2(0f, 0f); script.rot = rot;
             /*

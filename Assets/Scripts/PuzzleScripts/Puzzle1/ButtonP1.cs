@@ -16,7 +16,7 @@ public class ButtonP1 : MonoBehaviour
     private Collider2D playercollission;
     public bool touchingplayer = false;
     private float t = 2f;
-
+    SoundManager sound;
 
 
     void Start(){
@@ -24,6 +24,7 @@ public class ButtonP1 : MonoBehaviour
         SR.sprite = onsprite;
        else
         SR.sprite = offsprite;
+       sound = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -33,12 +34,13 @@ public class ButtonP1 : MonoBehaviour
       if(Input.GetKeyDown("e") && touchingplayer && t >= 1){ //limit speed of touching switch
         t = 0;
         on = !on;
-        if(on)
+        sound.PlaySound("Light", false);
+        if (on)
          SR.sprite = onsprite;
         else
          SR.sprite = offsprite;
       }
-
+      
 
     }
 

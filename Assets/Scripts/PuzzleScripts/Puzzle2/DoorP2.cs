@@ -45,7 +45,7 @@ public class DoorP2 : MonoBehaviour
       if(PLAYERINPUT[index] != platColor){
           PLAYERINPUT[index] != platColor;
           index +=1;
-          if(index == PLAYERINPUT.Length{
+          if(index == PLAYERINPUT.Length){
             index =0;
           }
       }

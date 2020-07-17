@@ -38,19 +38,20 @@ public class DoorP2 : MonoBehaviour
           GameObject.Find(objectname).SetActive(false);
           unlocked=true;
         }
-
+        */
     }
 
     public void AddtoArray(string platColor){
-      if(PLAYERINPUT[index] != platColor){
+      /*if(PLAYERINPUT[index] != platColor){
           PLAYERINPUT[index] != platColor;
           index +=1;
           if(index == PLAYERINPUT.Length){
-            index =0;
+            index = 0;
           }
-      }
+      }*/
 
-      */
+
     }
+
 
 }

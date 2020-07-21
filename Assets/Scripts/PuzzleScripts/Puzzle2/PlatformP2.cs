@@ -7,6 +7,8 @@ public class PlatformP2 : MonoBehaviour
 
     [SerializeField]
     public string platformColor;
+    [SerializeField]
+    public bool reset_plat;
 //-------------------
     private GameObject GameManager;
     private DoorP2 Door; //unfortunately non-descriptive name
@@ -26,12 +28,15 @@ public class PlatformP2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
       if (collision.gameObject.tag == "Player"){
-        //Door.AddtoArray(platformColor);
+        if(reset_plat){
+          //Door.clearArray(platformColor);
+        }
+        else{
+          //Door.AddtoArray(platformColor);
+        }
       }
     }
 
-    private void addtoDoorArray(){
-      //Door.AddtoArray(platformColor);
-    }
+
 
 }

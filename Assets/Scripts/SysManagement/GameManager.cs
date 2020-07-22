@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void ExitGame()
     {
         Application.Quit();

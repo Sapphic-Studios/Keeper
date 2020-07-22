@@ -11,11 +11,16 @@ public class PointAndMove : MonoBehaviour
     public GameObject arrow;
     Player script;
     public float speed;
+    private Transform pivot;
+    public float radius = .2f;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         script = player.GetComponent<Player>();
+        pivot = player.transform;
+        arrow.transform.parent = pivot;
+        transform.position += Vector3.up * radius;
     }
 
     // Update is called once per frame
@@ -24,9 +29,11 @@ public class PointAndMove : MonoBehaviour
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
         pointer.transform.position = new Vector2(target.x, target.y);
 
+        
         Vector3 difference = target - player.transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90f;
-        arrow.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ+90f);
+        arrow.transform.rotation = Quaternion.AngleAxis(rotationZ + 90f, Vector3.forward);
+        arrow.transform.position = player.transform.position + (Quaternion.AngleAxis(rotationZ, Vector3.forward * radius) * Vector3.up);
         float dist = Vector2.Distance(target, player.transform.position);
         speed = Mathf.Clamp( dist+3, 5.0f,8.0f);
 

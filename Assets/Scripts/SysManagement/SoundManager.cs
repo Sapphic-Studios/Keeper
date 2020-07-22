@@ -9,6 +9,7 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     float timer = 0.5f;
+    public float masterVolume = 1f;
     public Sound[] sounds;
     private Dictionary<Sound, float> soundTimerDictionary;
     private void Awake()
@@ -16,7 +17,8 @@ public class SoundManager : MonoBehaviour
         soundTimerDictionary = new Dictionary<Sound, float>();
         foreach (Sound s in sounds)
         {    
-            soundTimerDictionary[s] = -1000f; 
+            soundTimerDictionary[s] = -1000f;
+            s.setVolume = s.volume;
         }
         PlaySound("Drone", false);
         PlaySound("Die", false);
@@ -50,11 +52,13 @@ public class SoundManager : MonoBehaviour
     private void GenerateSound(Sound s)
     {
         GameObject obj = new GameObject("Sound");
+        obj.tag = "Sound";
         AudioSource audio = obj.AddComponent<AudioSource>();
         audio.clip = s.clip;
         audio.volume = s.volume;
         audio.pitch = s.pitch;
         audio.loop = s.loop;
+        audio.mute = s.mute;
         audio.Play();
         soundTimerDictionary[s] = Time.time;
         //s.source.Play();
@@ -78,10 +82,11 @@ public class SoundManager : MonoBehaviour
         if (CanPlaySound(s))
         {
             GameObject obj = new GameObject("Sound");
+            obj.tag = "Sound";
             obj.transform.position = position;
             AudioSource audio = obj.AddComponent<AudioSource>();
             audio.clip = s.clip;
-            audio.volume = s.volume;
+            audio.volume = s.volume * masterVolume;
             audio.pitch = s.pitch;
             audio.Play();
             timer = 0.5f;
@@ -89,5 +94,32 @@ public class SoundManager : MonoBehaviour
             UnityEngine.Object.Destroy(obj, audio.clip.length);
         }
 
+    }
+    public void Mute()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (!s.mute){s.mute = true;}else{s.mute = false;};
+        }
+        GameObject[] playingSounds = GameObject.FindGameObjectsWithTag("Sound");
+        foreach (GameObject s in playingSounds)
+        {
+            AudioSource audio = s.GetComponent<AudioSource>();
+            if (!audio.mute) { audio.mute = true; } else { audio.mute = false; };
+        }
+    }
+    public void Volume(float vol)
+    {
+        masterVolume = vol;
+        GameObject[] playingSounds = GameObject.FindGameObjectsWithTag("Sound");
+        foreach (Sound s in sounds)
+        {
+            s.volume = s.setVolume * masterVolume;
+        }
+        foreach (GameObject s in playingSounds)
+        {
+            AudioSource audio = s.GetComponent<AudioSource>();
+            audio.volume = 0.25f * masterVolume;
+        }
     }
 }

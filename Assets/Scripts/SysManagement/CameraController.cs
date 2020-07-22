@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public float minY, maxY;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
+    private Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,11 @@ public class CameraController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 targetPos = player.position;
-        targetPos = new Vector3(Mathf.Clamp(player.position.x, minX, maxX), Mathf.Clamp(player.position.y, minY, maxY), transform.position.z);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothSpeed);
+        mousePos = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -100f));
+        targetPos = new Vector3(Mathf.Clamp(player.position.x, minX, maxX), Mathf.Clamp(player.position.y, minY, maxY), -100f);
+
+        Vector3 difference = mousePos - targetPos;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos+ difference*(0.1f), ref velocity, smoothSpeed);
         
     }
 }

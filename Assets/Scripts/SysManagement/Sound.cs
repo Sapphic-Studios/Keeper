@@ -11,12 +11,19 @@ public class Sound
 
     [Range(0f, 1f)]
     public float volume;
+
+    [HideInInspector]
+    [Range(0f, 1f)]
+    public float setVolume;
+
     [Range(0.1f, 3f)]
     public float pitch;
 
     public float delay;
 
     public bool loop;
+
+    public bool mute;
 
     [HideInInspector]
     public AudioSource source;

@@ -6,7 +6,8 @@ public class Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject UI;
-    bool isPaused;
+    public GameObject optionsMenu;
+    bool isPaused, inOptions;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,5 +38,21 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(false);
         UI.SetActive(true);
         Time.timeScale = 1f;
+    }
+
+    public void Options()
+    {
+        if (inOptions)
+        {
+            inOptions = false;
+            pauseMenu.SetActive(true);
+            optionsMenu.SetActive(false);
+        }
+        else
+        {
+            inOptions = true;
+            pauseMenu.SetActive(false);
+            optionsMenu.SetActive(true);
+        }
     }
 }

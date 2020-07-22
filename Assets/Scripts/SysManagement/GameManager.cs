@@ -9,12 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Text chainCount;
     GameObject player;
+    public bool mute;
+    
+    SoundManager sound;
 
     int newCount;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        sound = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -42,5 +46,12 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-
+    public void MuteSound()
+    {
+        sound.Mute();
+    }
+    public void ChangeVolume(float vol)
+    {
+        sound.Volume(vol);
+    }
 }

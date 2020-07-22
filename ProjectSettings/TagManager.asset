@@ -10,6 +10,7 @@ TagManager:
   - Hazard
   - Pause
   - DoorP1
+  - Sound
   layers:
   - Default
   - TransparentFX

@@ -29,10 +29,10 @@ public class PlatformP2 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
       if (collision.gameObject.tag == "Player"){
         if(reset_plat){
-          //Door.clearArray(platformColor);
+          Door.clearArray();
         }
         else{
-          //Door.AddtoArray(platformColor);
+          Door.AddtoArray(platformColor);
         }
       }
     }

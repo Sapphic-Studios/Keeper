@@ -56,12 +56,12 @@ public class Player : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0)){
             Debug.Log("Pressed left click.");
-            //col.enabled = false;
+            col.enabled = false;
             timer = 0.05f;
         }
         if (timer <= 0)
         {
-            //col.enabled = true;
+            col.enabled = true;
         }
         else if(Input.GetMouseButtonDown(1)){
           Debug.Log("Pressed right click.");

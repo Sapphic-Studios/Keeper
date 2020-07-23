@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     public float value;
     float edgeSize = 3f;
     public float width = Screen.width;
-    public float mouseX = Input.mousePosition.x;
+    public float mouseX;
     public float offsetX = 8f;
     public float offsetY = 4.7f;
     // Start is called before the first frame update
@@ -41,19 +41,19 @@ public class CameraController : MonoBehaviour
         /*
         if (difference.magnitude > 5f) dist = difference.magnitude;
         else dist = 1000f;*/
-        if (Input.GetKey("d") || mousePos.x > player.position.x + offsetX)
+        if (mousePos.x > player.position.x + offsetX)
         {
             targetPos.x += 100f * Time.deltaTime;
         }
-        if (Input.GetKey("a") || mousePos.x < player.position.x - offsetX)
+        if (mousePos.x < player.position.x - offsetX)
         {
             targetPos.x -= 100f * Time.deltaTime;
         }
-        if (Input.GetKey("w") || mousePos.y > player.position.y + offsetY)
+        if (mousePos.y > player.position.y + offsetY)
         {
             targetPos.y += 100f * Time.deltaTime;
         }
-        if (Input.GetKey("s") || mousePos.y < player.position.y - offsetY)
+        if (mousePos.y < player.position.y - offsetY)
         {
             targetPos.y -= 100f * Time.deltaTime;
         }

@@ -79,7 +79,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (!hasSpawned)
         {
-            Instantiate(thoughtPrefab, speaker.transform.position, transform.rotation);
+            GameObject bubble = Instantiate(thoughtPrefab, speaker.transform.position, transform.rotation);
+            bubble.transform.parent = speaker.transform;
             hasSpawned = true;
         }
         

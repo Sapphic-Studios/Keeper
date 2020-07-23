@@ -234,7 +234,10 @@ public class Platform : MonoBehaviour
             }
             
 
-
+            if (!script.IsGrounded())
+            {
+                
+            }
 
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             int angle = (int)euler.z;

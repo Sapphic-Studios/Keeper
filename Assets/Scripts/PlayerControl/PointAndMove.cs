@@ -48,7 +48,7 @@ public class PointAndMove : MonoBehaviour
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;
                 direction.Normalize();
-                animator.SetBool("MarleyJump",true);
+                //animator.SetBool("MarleyJump",true);
                 StartCoroutine(moveInDirection(direction, rotationZ));
                 script.grounded = false;
             }

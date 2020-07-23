@@ -10,8 +10,10 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     private Queue<string> names;
     private Queue<string> sentences;
-
+    public GameObject speaker;
     public Animator animator;
+    public GameObject thoughtPrefab;
+    bool hasSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class DialogueManager : MonoBehaviour
       Debug.Log("Starting conversation with "  + dialogue.name[0]);
       animator.SetBool("OnScreen", true);
       nameText.text = dialogue.name[0];
-
+      hasSpawned = false;
       sentences.Clear();
       //fills queue with sentences from dialogue
       foreach (string sentence in dialogue.sentences){
@@ -35,8 +37,10 @@ public class DialogueManager : MonoBehaviour
         names.Enqueue(name);
       }
       SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        //SpawnBubble();
       s.PlaySound("Whoosh", false);
       DisplayNextSentence();
+      
     }
 
     public void DisplayNextSentence(){
@@ -70,6 +74,15 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue(){
       Debug.Log("End of Dialogue");
       animator.SetBool("OnScreen", false);
+    }
+    private void SpawnBubble()
+    {
+        if (!hasSpawned)
+        {
+            Instantiate(thoughtPrefab, speaker.transform.position, transform.rotation);
+            hasSpawned = true;
+        }
+        
     }
 
 

@@ -13,6 +13,7 @@ public class PointAndMove : MonoBehaviour
     public float speed;
     private Transform pivot;
     public float radius = .2f;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class PointAndMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
         pointer.transform.position = new Vector2(target.x, target.y);
 
@@ -40,12 +42,14 @@ public class PointAndMove : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && player.GetComponent<Rigidbody2D>().velocity.x ==0)
         {
+
             if (!badAngle() )
             {
                 float distance = difference.magnitude;
                 Vector2 direction = difference / distance;
                 direction.Normalize();
-                moveInDirection(direction, rotationZ);
+                animator.SetBool("MarleyJump",true);
+                StartCoroutine(moveInDirection(direction, rotationZ));
                 script.grounded = false;
             }
         }
@@ -77,8 +81,9 @@ public class PointAndMove : MonoBehaviour
         }
         return false;
     }
-    void moveInDirection(Vector2 direction, float rotationZ)
+    IEnumerator moveInDirection(Vector2 direction, float rotationZ)
     {
+        yield return new WaitForSeconds(0f);
         //player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         script.rot = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         player.GetComponent<Rigidbody2D>().velocity = direction * speed;

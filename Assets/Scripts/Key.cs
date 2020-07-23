@@ -21,6 +21,8 @@ public class Key : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
       if (collision.gameObject.tag == "Player"){
         door.SetActive(false);
+        SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        s.PlaySound("CollectChain", true);
         gameObject.SetActive(false);
       }
     }

@@ -36,7 +36,11 @@ public class Player : MonoBehaviour
     {
       animator.SetFloat("speed", Mathf.Abs((rb.velocity.x + rb.velocity.y)));
       animator.SetBool("grounded", IsGrounded() );
-      animator.SetBool("walking", Input.GetKeyDown("left") || Input.GetKeyDown("a") || Input.GetKeyDown("right") || Input.GetKeyDown("d"));
+      if (Input.GetButton("left") || Input.GetButton("a") || Input.GetButton("right") || Input.GetButton("d"))
+        animator.SetBool("walking", true);
+      else
+        animator.SetBool("walking", false);
+        
       //handles advancing dialogue via DialogueManager
       if(Input.GetKeyDown("z")){
           DM.DisplayNextSentence();
@@ -53,7 +57,7 @@ public class Player : MonoBehaviour
     {
         timer -= 0.01f;
         transform.rotation = rot;
-        
+
         if (Input.GetMouseButtonDown(0)){
             Debug.Log("Pressed left click.");
             col.enabled = false;

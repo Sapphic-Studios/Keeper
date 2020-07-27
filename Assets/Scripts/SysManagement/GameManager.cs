@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         sound = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

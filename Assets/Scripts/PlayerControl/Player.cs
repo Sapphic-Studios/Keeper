@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
       animator.SetFloat("speed", Mathf.Abs((rb.velocity.x + rb.velocity.y)));
       animator.SetBool("grounded", IsGrounded() );
-      animator.SetBool("walking", Input.GetButton("a") || Input.GetButton("d"));
+      animator.SetBool("walking", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D));
 
       //handles advancing dialogue via DialogueManager
       if(Input.GetKeyDown("z")){

@@ -8144,7 +8144,7 @@ GameObject:
   - component: {fileID: 458357662}
   - component: {fileID: 458357661}
   - component: {fileID: 458357663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9935,7 +9935,7 @@ GameObject:
   - component: {fileID: 800540955}
   - component: {fileID: 800540954}
   - component: {fileID: 800540956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PurplePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11291,7 +11291,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -11311,11 +11311,11 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -3259302721867843416, guid: 152de8051e115cb4a9996fc135621f9e,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 7275194114839437007, guid: 152de8051e115cb4a9996fc135621f9e,
       type: 3}
@@ -13493,7 +13493,7 @@ GameObject:
   - component: {fileID: 1303168720}
   - component: {fileID: 1303168719}
   - component: {fileID: 1303168722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OrangePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14741,7 +14741,7 @@ GameObject:
   - component: {fileID: 1521734640}
   - component: {fileID: 1521734639}
   - component: {fileID: 1521734642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BluePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40578,7 +40578,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -40965,7 +40965,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -41082,7 +41082,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -41388,7 +41388,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -41896,12 +41896,10 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 1900829332847883560, guid: f26fe7e9aadd07649a29705f5cd75a23,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -5790478667318128294, guid: f26fe7e9aadd07649a29705f5cd75a23,
-      type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -7523999878389703993, guid: f26fe7e9aadd07649a29705f5cd75a23,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 16
     m_Data: {fileID: 1872814950181276561, guid: 4a99649d63d0250439e8dd9179e76074,
       type: 3}
@@ -41914,20 +41912,22 @@ Tilemap:
   - m_RefCount: 14
     m_Data: {fileID: -3830795407864944850, guid: 152de8051e115cb4a9996fc135621f9e,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -5790478667318128294, guid: f26fe7e9aadd07649a29705f5cd75a23,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 7244794368618105806, guid: 74732f49f2ba74e49898c22959ad67df,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -8419882842955673352, guid: 74732f49f2ba74e49898c22959ad67df,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -7523999878389703993, guid: f26fe7e9aadd07649a29705f5cd75a23,
+      type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -5289247054309021453, guid: f26fe7e9aadd07649a29705f5cd75a23,
       type: 3}
@@ -43031,7 +43031,7 @@ GameObject:
   - component: {fileID: 2038943569}
   - component: {fileID: 2038943568}
   - component: {fileID: 2038943570}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrayPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

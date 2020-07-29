@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
       animator.SetBool("OnScreen", true);
       nameText.text = dialogue.name[0];
       hasSpawned = false;
+      names.Clear();
       sentences.Clear();
       //fills queue with sentences from dialogue
       foreach (string sentence in dialogue.sentences){
@@ -40,7 +41,7 @@ public class DialogueManager : MonoBehaviour
         //SpawnBubble();
       s.PlaySound("Whoosh", false);
       DisplayNextSentence();
-      
+
     }
 
     public void DisplayNextSentence(){
@@ -83,7 +84,7 @@ public class DialogueManager : MonoBehaviour
             bubble.transform.parent = speaker.transform;
             hasSpawned = true;
         }
-        
+
     }
 
 

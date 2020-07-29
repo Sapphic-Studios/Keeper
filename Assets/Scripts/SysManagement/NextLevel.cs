@@ -12,12 +12,11 @@ public class NextLevel : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("door");
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("chonk2");
+            StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, "chonk2"));
         }
     }
 }

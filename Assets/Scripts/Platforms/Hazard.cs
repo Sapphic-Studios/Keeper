@@ -19,7 +19,12 @@ public class Hazard : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
       if (collision.gameObject.tag == "Player"){
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+
+        Scene scene = SceneManager.GetActiveScene();
+
+            StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.Out,scene.name));
+            
+            SceneManager.LoadScene(scene.name);
       }
     }
 }

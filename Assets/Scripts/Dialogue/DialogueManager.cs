@@ -28,9 +28,10 @@ public class DialogueManager : MonoBehaviour
       animator.SetBool("OnScreen", true);
       nameText.text = dialogue.name[0];
       hasSpawned = false;
+      //clear out old queues
       names.Clear();
       sentences.Clear();
-      //fills queue with sentences from dialogue
+      //fills queues with names/sentences from dialogue
       foreach (string sentence in dialogue.sentences){
         sentences.Enqueue(sentence);
       }

@@ -2633,6 +2633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157826651}
   - component: {fileID: 157826650}
+  - component: {fileID: 157826652}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -2704,6 +2705,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &157826652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157826649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040698a552fdfbb41b391ee11df0c981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: 
+    clip: {fileID: 8300000, guid: dde1f49ef4af9d74185d8ac89c01d66e, type: 3}
+    volume: 0.075
+    setVolume: 0
+    pitch: 1
+    delay: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: ee4bd9e7e9f79a8469416d810e2bd8c0, type: 3}
+    volume: 0.075
+    setVolume: 0
+    pitch: 1
+    delay: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 13d4120fcc16949449369bccfa62f7ce, type: 3}
+    volume: 0.075
+    setVolume: 0
+    pitch: 1
+    delay: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: f7b293f2114f9c14aa5b5a64b2568229, type: 3}
+    volume: 0.075
+    setVolume: 0
+    pitch: 1
+    delay: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 584118fde948a9541aea49365828204c, type: 3}
+    volume: 1
+    setVolume: 0
+    pitch: 1
+    delay: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 8300000, guid: 99ccadd6c93643c4d8e28c125b9960be, type: 3}
+    volume: 1
+    setVolume: 0
+    pitch: 1
+    delay: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
 --- !u!1 &167255694
 GameObject:
   m_ObjectHideFlags: 0
@@ -8206,7 +8274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.47058824}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27256,7 +27324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.018364226, y: 0.17500001}
   m_AnchorMax: {x: 0.13432652, y: 0.22813044}
-  m_AnchoredPosition: {x: 1.0116577, y: -2.8492432}
+  m_AnchoredPosition: {x: 1.0115967, y: -2.8492432}
   m_SizeDelta: {x: 7.4936523, y: 3.9767532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948363001
@@ -64380,7 +64448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1836533991
 RectTransform:
   m_ObjectHideFlags: 0

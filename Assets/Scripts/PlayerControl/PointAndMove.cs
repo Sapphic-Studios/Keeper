@@ -9,7 +9,6 @@ public class PointAndMove : MonoBehaviour
     public GameObject pointer;
     public GameObject player;
     public GameObject arrow;
-    //public Collider2D playerhitbox;
     Player script;
     public float speed;
     private Transform pivot;
@@ -91,5 +90,4 @@ public class PointAndMove : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = direction * speed;
         script.velocity = player.GetComponent<Rigidbody2D>().velocity;
     }
-
 }

@@ -75,24 +75,54 @@ public class SoundManager : MonoBehaviour
             GenerateSound(s);
         }
     }
-    public void PlaySound(string name, Vector3 position)
+    public void PlaySound(string name, Vector3 position, bool oneShot)
     {
         Sound s = findSound(name);
         if (s == null) return;
-        if (CanPlaySound(s))
+        if (oneShot || CanPlaySound(s))
         {
             GameObject obj = new GameObject("Sound");
             obj.tag = "Sound";
             obj.transform.position = new Vector3(position.x,position.y,-100);
             AudioSource audio = obj.AddComponent<AudioSource>();
+            audio.transform.position = new Vector3(position.x, position.y, -100);
             audio.clip = s.clip;
             audio.volume = s.volume * masterVolume;
             audio.pitch = s.pitch;
             audio.loop = s.loop;
             audio.mute = s.mute;
-            audio.maxDistance = 300f;
+            audio.minDistance = 0f;
+            audio.maxDistance = 5f;
             audio.spatialBlend = 1f;
-            audio.rolloffMode = AudioRolloffMode.Logarithmic;
+            audio.rolloffMode = AudioRolloffMode.Linear;
+            audio.dopplerLevel = 0f;
+            soundTimerDictionary[s] = Time.time;
+            audio.Play();
+            //s.source.Play();
+            if (!audio.loop)
+                UnityEngine.Object.Destroy(obj, audio.clip.length);
+        }
+    }
+    public void PlayWhisper(int name, Vector3 position, bool oneShot)
+    {
+        Sound s = GetComponent<Whispers>().findSound(name);
+        if (s == null) return;
+        if (oneShot || CanPlaySound(s))
+        {
+            GameObject obj = new GameObject("Sound");
+            obj.tag = "Sound";
+            obj.transform.position = new Vector3(position.x, position.y, -100);
+            AudioSource audio = obj.AddComponent<AudioSource>();
+            audio.transform.position = new Vector3(position.x, position.y, -100);
+            audio.clip = s.clip;
+            audio.volume = s.volume * masterVolume;
+            audio.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            audio.loop = s.loop;
+            audio.mute = s.mute;
+            audio.minDistance = 0f;
+            audio.maxDistance = 5f;
+            audio.spatialBlend = 1f;
+            audio.rolloffMode = AudioRolloffMode.Linear;
             audio.dopplerLevel = 0f;
             soundTimerDictionary[s] = Time.time;
             audio.Play();

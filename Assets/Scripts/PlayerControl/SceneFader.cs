@@ -61,6 +61,11 @@ public class SceneFader : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    public IEnumerator FadeNoLoad(FadeDirection fadeDirection)
+    {
+        yield return Fade(fadeDirection);
+    }
+
     private void SetColorImage(ref float alpha, FadeDirection fadeDirection)
     {
         fadeOutUIImage.color = new Color(fadeOutUIImage.color.r, fadeOutUIImage.color.g, fadeOutUIImage.color.b, alpha);

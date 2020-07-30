@@ -20,4 +20,8 @@ public class Context : MonoBehaviour
     {
         contextMenu.SetActive(true);
     }
+    public void controls()
+    {
+        contextMenu.SetActive(false);
+    }
 }

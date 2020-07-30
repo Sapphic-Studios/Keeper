@@ -729,7 +729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15597273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.93, y: 0.31, z: -1}
+  m_LocalPosition: {x: 15.8, y: -3.68, z: -1}
   m_LocalScale: {x: 0.075, y: 0.075, z: 1}
   m_Children:
   - {fileID: 1468843017}
@@ -15265,6 +15265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightPlatCorner Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2277576285582906434, guid: 3808a37a36d60a145b1530ea5dfab6d5,
+        type: 3}
+      propertyPath: moving
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2277576285582906445, guid: 3808a37a36d60a145b1530ea5dfab6d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24861,6 +24866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RightPlatCorner Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277576285582906434, guid: 3808a37a36d60a145b1530ea5dfab6d5,
+        type: 3}
+      propertyPath: moving
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2277576285582906445, guid: 3808a37a36d60a145b1530ea5dfab6d5,
         type: 3}
@@ -38075,6 +38085,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706748243817601932, guid: 55f1cc8bcd7d531458564c388d5b2156,
+        type: 3}
+      propertyPath: moving
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8706748243817601934, guid: 55f1cc8bcd7d531458564c388d5b2156,
         type: 3}
@@ -66998,6 +67013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706748243817601932, guid: 55f1cc8bcd7d531458564c388d5b2156,
+        type: 3}
+      propertyPath: moving
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8706748243817601934, guid: 55f1cc8bcd7d531458564c388d5b2156,
         type: 3}

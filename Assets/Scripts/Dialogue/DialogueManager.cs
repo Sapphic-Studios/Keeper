@@ -14,6 +14,9 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public GameObject thoughtPrefab;
     bool hasSpawned;
+    //keep track of the current coroutine
+    private IEnumerator coroutine;
+    private bool crRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -58,19 +61,22 @@ public class DialogueManager : MonoBehaviour
 
       string sentence = sentences.Dequeue();
       Debug.Log(sentence);
-      StopAllCoroutines();
-      StartCoroutine(TypeSentence(sentence));
+      if(crRunning) StopCoroutine(coroutine);
+      coroutine = TypeSentence(sentence);
+      StartCoroutine(coroutine);
 
 
     }
 
     IEnumerator TypeSentence(string sentence)
     {
+      crRunning=true;
       dialogueText.text = "";
       foreach (char letter in sentence.ToCharArray()){
         dialogueText.text += letter;
         yield return null;
       }
+      crRunning=false;
     }
 
     void EndDialogue(){

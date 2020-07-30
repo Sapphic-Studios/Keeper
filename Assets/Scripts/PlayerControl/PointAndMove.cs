@@ -27,11 +27,11 @@ public class PointAndMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
         pointer.transform.position = new Vector2(target.x, target.y);
 
-        
+
         Vector3 difference = target - player.transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90f;
         arrow.transform.rotation = Quaternion.AngleAxis(rotationZ + 90f, Vector3.forward);
@@ -81,6 +81,7 @@ public class PointAndMove : MonoBehaviour
         }
         return false;
     }
+
     IEnumerator moveInDirection(Vector2 direction, float rotationZ)
     {
         yield return new WaitForSeconds(0f);

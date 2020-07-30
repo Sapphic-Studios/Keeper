@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
     public float angle;
     Collider2D col;
     [SerializeField] public LayerMask platformLayer;
+
+
+    //keep track of the current coroutine
+    private IEnumerator coroutine;
+    private bool crRunning = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -144,7 +150,7 @@ public class Player : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None;
         }
-        
+
     }
 
     public bool IsGrounded()
@@ -258,6 +264,11 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
+    {
+      
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
     {
 
     }

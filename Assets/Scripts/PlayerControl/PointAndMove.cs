@@ -9,6 +9,7 @@ public class PointAndMove : MonoBehaviour
     public GameObject pointer;
     public GameObject player;
     public GameObject arrow;
+    //public Collider2D playerhitbox;
     Player script;
     public float speed;
     private Transform pivot;
@@ -27,11 +28,11 @@ public class PointAndMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
         pointer.transform.position = new Vector2(target.x, target.y);
 
-        
+
         Vector3 difference = target - player.transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg -90f;
         arrow.transform.rotation = Quaternion.AngleAxis(rotationZ + 90f, Vector3.forward);
@@ -81,6 +82,7 @@ public class PointAndMove : MonoBehaviour
         }
         return false;
     }
+
     IEnumerator moveInDirection(Vector2 direction, float rotationZ)
     {
         yield return new WaitForSeconds(0f);
@@ -89,4 +91,5 @@ public class PointAndMove : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = direction * speed;
         script.velocity = player.GetComponent<Rigidbody2D>().velocity;
     }
+
 }

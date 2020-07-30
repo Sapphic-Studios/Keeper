@@ -82,7 +82,24 @@ public class Player : MonoBehaviour
         grounded = IsGrounded();
         if (grounded)
         {
-            if((int)rot.eulerAngles.z != 180){
+            if (Input.GetKey("left") || Input.GetKey("a"))
+            {
+                //animator.SetBool("walking", true);
+                //Debug.Log("left");
+                if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = false;
+                else this.GetComponent<SpriteRenderer>().flipX = true;
+
+
+            }
+            if (Input.GetKey("right") || Input.GetKey("d"))
+            {
+                //animator.SetBool("walking", true);
+                //Debug.Log("right");
+                if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
+                else this.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            //if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
+            if ((int)rot.eulerAngles.z != 180){
                 if (atLeftEdge() && movement < 0f) movement = 0f;
                 if (atRightEdge() && movement > 0f) movement = 0f;
             }
@@ -95,7 +112,7 @@ public class Player : MonoBehaviour
             //Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
             if (movement != 0)
             {
-                sound.PlaySound("Step",false);
+                sound.PlaySound("Step",transform.position);
                 animator.SetBool("walking", true);
             }
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);
@@ -126,23 +143,7 @@ public class Player : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None;
         }
-        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
-        {
-            //animator.SetBool("walking", true);
-            //Debug.Log("left");
-            if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = false;
-            else this.GetComponent<SpriteRenderer>().flipX = true;
-
-
-        }
-        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
-        {
-            //animator.SetBool("walking", true);
-            //Debug.Log("right");
-            if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
-            else this.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        if ((int)rot.eulerAngles.z == 180) this.GetComponent<SpriteRenderer>().flipX = true;
+        
     }
 
     public bool IsGrounded()

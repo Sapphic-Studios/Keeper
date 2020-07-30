@@ -83,17 +83,23 @@ public class SoundManager : MonoBehaviour
         {
             GameObject obj = new GameObject("Sound");
             obj.tag = "Sound";
-            obj.transform.position = position;
+            obj.transform.position = new Vector3(position.x,position.y,-100);
             AudioSource audio = obj.AddComponent<AudioSource>();
             audio.clip = s.clip;
             audio.volume = s.volume * masterVolume;
             audio.pitch = s.pitch;
+            audio.loop = s.loop;
+            audio.mute = s.mute;
+            audio.maxDistance = 100f;
+            audio.spatialBlend = 1f;
+            audio.rolloffMode = AudioRolloffMode.Logarithmic;
+            audio.dopplerLevel = 0f;
+            soundTimerDictionary[s] = Time.time;
             audio.Play();
-            timer = 0.5f;
             //s.source.Play();
-            UnityEngine.Object.Destroy(obj, audio.clip.length);
+            if (!audio.loop)
+                UnityEngine.Object.Destroy(obj, audio.clip.length);
         }
-
     }
     public void Mute()
     {

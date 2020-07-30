@@ -90,7 +90,7 @@ public class SoundManager : MonoBehaviour
             audio.pitch = s.pitch;
             audio.loop = s.loop;
             audio.mute = s.mute;
-            audio.maxDistance = 100f;
+            audio.maxDistance = 300f;
             audio.spatialBlend = 1f;
             audio.rolloffMode = AudioRolloffMode.Logarithmic;
             audio.dopplerLevel = 0f;

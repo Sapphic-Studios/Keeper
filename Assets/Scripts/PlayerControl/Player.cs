@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         grounded = IsGrounded();
         if (grounded)
         {
-            if (Input.GetKey("left") || Input.GetKey("a"))
+            if ((Input.GetKey("left") || Input.GetKey("a")) && !(Input.GetKey("right") || Input.GetKey("d")))
             {
                 //animator.SetBool("walking", true);
                 //Debug.Log("left");
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 
 
             }
-            if (Input.GetKey("right") || Input.GetKey("d"))
+            if (Input.GetKey("right") || Input.GetKey("d") && !(Input.GetKey("left") || Input.GetKey("a")))
             {
                 //animator.SetBool("walking", true);
                 //Debug.Log("right");

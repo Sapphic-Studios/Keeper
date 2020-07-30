@@ -25,7 +25,7 @@ public class PointAndMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
@@ -87,7 +87,7 @@ public class PointAndMove : MonoBehaviour
         yield return new WaitForSeconds(0f);
         //player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         script.rot = Quaternion.Euler(0.0f, 0.0f, rotationZ);
-        player.transform.position += new Vector3(direction.x*0.05f,direction.y*0.05f,0);
+        //player.transform.position += new Vector3(direction.x*0.1f,direction.y*0.1f,0);
         player.GetComponent<Rigidbody2D>().velocity = direction * speed;
         script.velocity = player.GetComponent<Rigidbody2D>().velocity;
     }

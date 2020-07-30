@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad131eac00a592646873307bfe930274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Triggered: 0
   dialogue:
     name:
     - Marley
@@ -549,8 +550,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03516806, y: 0.13687819}
   m_AnchorMax: {x: 0.9211681, y: 0.42400002}
-  m_AnchoredPosition: {x: 0.7789917, y: 0.22999573}
-  m_SizeDelta: {x: 1.5589905, y: 0.27910614}
+  m_AnchoredPosition: {x: 0.7789917, y: 11.64}
+  m_SizeDelta: {x: 1.55896, y: 23.105476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7641716
 MonoBehaviour:
@@ -573,9 +574,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 200
     m_Alignment: 0
@@ -26988,6 +26989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad131eac00a592646873307bfe930274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Triggered: 0
   dialogue:
     name: []
     sentences:
@@ -28318,6 +28320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad131eac00a592646873307bfe930274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Triggered: 0
   dialogue:
     name:
     - Marley
@@ -29077,6 +29080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad131eac00a592646873307bfe930274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Triggered: 0
   dialogue:
     name:
     - Marley
@@ -30677,6 +30681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad131eac00a592646873307bfe930274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Triggered: 0
   dialogue:
     name: []
     sentences: []
@@ -31264,6 +31269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad131eac00a592646873307bfe930274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Triggered: 0
   dialogue:
     name:
     - Marley

@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             //Debug.Log(Mathf.RoundToInt(transform.rotation.eulerAngles.z));
             if (movement != 0)
             {
-                sound.PlaySound("Step",transform.position);
+                sound.PlaySound("Step",transform.position,false);
                 animator.SetBool("walking", true);
             }
             if (movement == 0f && timer<0) rb.velocity = new Vector2(0f, 0f);

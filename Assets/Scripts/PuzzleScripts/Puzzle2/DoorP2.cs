@@ -36,6 +36,8 @@ public class DoorP2 : MonoBehaviour
           }
         }
         if(isCorrect){
+          SoundManager s = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+          s.PlaySound("Door", false);
           door.SetActive(false);
           unlocked=true;
         }

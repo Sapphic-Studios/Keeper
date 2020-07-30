@@ -86,6 +86,7 @@ public class PointAndMove : MonoBehaviour
         yield return new WaitForSeconds(0f);
         //player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         script.rot = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+        player.transform.position += new Vector3(direction.x*0.05f,direction.y*0.05f,0);
         player.GetComponent<Rigidbody2D>().velocity = direction * speed;
         script.velocity = player.GetComponent<Rigidbody2D>().velocity;
     }

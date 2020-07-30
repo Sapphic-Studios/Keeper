@@ -11,6 +11,7 @@ public class Corners : MonoBehaviour
     BoxCollider2D coll;
     public enum Direction { up, down, left, right };
     public Direction dir,sendDir;
+    public bool moving;
     Vector3 euler;
     public Quaternion rot;
     public float hitTimer;
@@ -85,8 +86,16 @@ public class Corners : MonoBehaviour
 
             script.rot = rot;
             player.transform.position = transform.position;
+            if (moving) player.transform.SetParent(transform.parent);
+            
+            
             //script.sound.PlaySound("Step", true);
             rb.velocity = new Vector2(0f, 0f);
         }
      }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //if (collision.gameObject.tag == "Player" && !script.grounded)
+            //if (moving) player.transform.SetParent(null);
+    }
 }

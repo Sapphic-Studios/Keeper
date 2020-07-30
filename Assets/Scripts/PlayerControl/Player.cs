@@ -55,7 +55,8 @@ public class Player : MonoBehaviour
         timer -= 0.01f;
         transform.rotation = rot;
 
-        if (Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0) && grounded)
+        {
             Debug.Log("Pressed left click.");
             col.enabled = false;
             timer = 0.05f;

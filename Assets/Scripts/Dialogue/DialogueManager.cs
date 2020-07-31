@@ -18,6 +18,10 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator coroutine;
     private bool crRunning = false;
 
+    //keep track of object currently talking
+    private bool leaveAfterTalk = false;
+    private string talkingObjectName = "";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +29,10 @@ public class DialogueManager : MonoBehaviour
       sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, bool leaving, string objname)
     {
+      talkingObjectName = objname;
+      leaveAfterTalk = leaving;
       Debug.Log("Starting conversation with "  + dialogue.name[0]);
       animator.SetBool("OnScreen", true);
       nameText.text = dialogue.name[0];
@@ -80,6 +86,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     void EndDialogue(){
+      if(leaveAfterTalk)
+        GameObject.Find(talkingObjectName).SetActive(false);
       Debug.Log("End of Dialogue");
       animator.SetBool("OnScreen", false);
     }

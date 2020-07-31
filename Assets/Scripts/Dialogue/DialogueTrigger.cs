@@ -5,11 +5,12 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public bool Triggered = false;
+    public bool leaveAfterTalk = false;
     public Dialogue dialogue;
 
     public void TriggerDialogue(){
       if (!Triggered){
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue, leaveAfterTalk, this.name);
         Triggered = true;
       }
     }

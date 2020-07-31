@@ -15,7 +15,8 @@ public class MovingPlatform : MonoBehaviour
     private float t_y = 0f;
 
     //private Vector3 starting_position;
-    //[SerializeField] private Bool ;
+    [SerializeField]
+    private bool changeDirection = false;
 
 
     // Start is called before the first frame update
@@ -42,6 +43,8 @@ public class MovingPlatform : MonoBehaviour
         if( t_x <= 0 ){
           ActualSpeedX = SpeedX * Mathf.Sign(SpeedX) * Mathf.Sign(ActualSpeedX) * -1;
           t_x = LoopTimerX;
+          if (changeDirection)
+            transform.localScale = new Vector3( ( -1 * (transform.localScale.x) ), (transform.localScale.y), transform.localScale.z);
         }
         if( t_y <= 0 ){
           ActualSpeedY = SpeedY * Mathf.Sign(SpeedY) * Mathf.Sign(ActualSpeedY) * -1;

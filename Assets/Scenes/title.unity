@@ -558,8 +558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.22998, y: 1.27}
-  m_SizeDelta: {x: 1031.512, y: 713.1328}
+  m_AnchoredPosition: {x: -1.6, y: 0}
+  m_SizeDelta: {x: 1233.054, y: 838.8257}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899237590
 MonoBehaviour:
@@ -581,7 +581,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 910f3992cbab74e41a082636bfd9962d, type: 3}
+    m_Font: {fileID: 12800000, guid: 65cdc52c88f64104f9a5d08793f19fd4, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 1
@@ -593,19 +593,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Marley took a new job at a lighthouse hours from her hometown to have
-    a fresh start. What she didn''t expect when she entered was the interior of the
+  m_Text: "Marley took a new job at a lighthouse hours from her hometown to have
+    a fresh start. What she didn't expect when she entered was the interior of the
     lighthouse to be entirely transformed. Gravity and space work differently and
     strange voices speak from the shadows. From the fog and darkness, a glowing pair
     of eyes told Marley that she cannot leave through the door or windows but is
-    able to explore the entirety of the lighthouse. Determined to make it out alive,
-    Marley began the slow journey up the lighthouse, since the voice said nothing
-    about getting out the top and climbing down the side. She just needs to pick
-    up enough pieces of chain along the way to make it down the side.
-
-
-    Click
-    to continue'
+    able to explore the entirety of the lighthouse. \n\nDetermined to make it out
+    alive, Marley began the slow journey up the lighthouse, since the voice said
+    nothing about getting out the top and climbing down the side. She just needs
+    to pick up enough pieces of chain along the way to make it down the side.\n\nClick
+    to continue"
 --- !u!222 &899237591
 CanvasRenderer:
   m_ObjectHideFlags: 0

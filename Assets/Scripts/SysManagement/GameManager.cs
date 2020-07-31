@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeLevel(string scene)
     {
+        Time.timeScale = 1f;
         StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, scene));
     }
 

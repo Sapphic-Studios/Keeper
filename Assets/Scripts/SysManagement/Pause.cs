@@ -26,6 +26,7 @@ public class Pause : MonoBehaviour
             }
             else
             {
+                Cursor.visible = false;
                 isPaused = true;
                 pauseMenu.SetActive(true);
                 UI.SetActive(false);

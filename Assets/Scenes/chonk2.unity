@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggered: 0
+  leaveAfterTalk: 0
   dialogue:
     name:
     - Marley
@@ -1098,7 +1099,8 @@ MonoBehaviour:
   LoopTimerX: 0
   LoopTimerY: 7
   delay: 0
-  changeDirection: 1
+  changeDirection: 0
+  changeDirectionY: 1
 --- !u!95 &65976353
 Animator:
   serializedVersion: 3
@@ -8569,6 +8571,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 3
   changeDirection: 0
+  changeDirectionY: 0
 --- !u!483693784 &256394923
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -8908,6 +8911,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 0
   changeDirection: 1
+  changeDirectionY: 0
 --- !u!95 &275408388
 Animator:
   serializedVersion: 3
@@ -14724,6 +14728,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 0
   changeDirection: 1
+  changeDirectionY: 0
 --- !u!95 &303870934
 Animator:
   serializedVersion: 3
@@ -17667,6 +17672,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 0
   changeDirection: 1
+  changeDirectionY: 0
 --- !u!95 &465708627
 Animator:
   serializedVersion: 3
@@ -28807,6 +28813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggered: 0
+  leaveAfterTalk: 0
   dialogue:
     name: []
     sentences:
@@ -30849,6 +30856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggered: 0
+  leaveAfterTalk: 0
   dialogue:
     name:
     - Marley
@@ -31841,6 +31849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggered: 0
+  leaveAfterTalk: 0
   dialogue:
     name:
     - Marley
@@ -33574,6 +33583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggered: 0
+  leaveAfterTalk: 0
   dialogue:
     name: []
     sentences: []
@@ -34162,6 +34172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggered: 0
+  leaveAfterTalk: 0
   dialogue:
     name:
     - Marley
@@ -36050,6 +36061,7 @@ MonoBehaviour:
   LoopTimerY: 1.3
   delay: 0
   changeDirection: 0
+  changeDirectionY: 1
 --- !u!95 &1323825929
 Animator:
   serializedVersion: 3
@@ -37566,6 +37578,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 0
   changeDirection: 1
+  changeDirectionY: 0
 --- !u!95 &1420146576
 Animator:
   serializedVersion: 3
@@ -38780,6 +38793,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 0
   changeDirection: 1
+  changeDirectionY: 0
 --- !u!95 &1467575127
 Animator:
   serializedVersion: 3
@@ -71981,6 +71995,7 @@ MonoBehaviour:
   LoopTimerY: 0
   delay: 0
   changeDirection: 1
+  changeDirectionY: 0
 --- !u!95 &2001976159
 Animator:
   serializedVersion: 3

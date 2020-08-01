@@ -593,16 +593,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Marley took a new job at a lighthouse hours from her hometown to have
-    a fresh start. What she didn't expect when she entered was the interior of the
-    lighthouse to be entirely transformed. Gravity and space work differently and
-    strange voices speak from the shadows. From the fog and darkness, a glowing pair
-    of eyes told Marley that she cannot leave through the door or windows but is
-    able to explore the entirety of the lighthouse. \n\nDetermined to make it out
-    alive, Marley began the slow journey up the lighthouse, since the voice said
-    nothing about getting out the top and climbing down the side. She just needs
-    to pick up enough pieces of chain along the way to make it down the side.\n\nClick
-    to continue"
+  m_Text: "When Marley took a new job at a lighthouse hours from her hometown for
+    a fresh start, she didn't expect the interior of the lighthouse to be entirely
+    transformed. Gravity and space work differently and strange voices speak from
+    the shadows. From the fog and darkness, a glowing pair of eyes told Marley that
+    she cannot leave through the door or windows but is able to explore the entirety
+    of the lighthouse. \n\nDetermined to make it out alive, Marley began the slow
+    journey up the lighthouse, since the voice said nothing about getting out the
+    top and scaling down. It'll all work out if she can gather enough chain to make
+    it to the ground on the way.\n\nClick to continue"
 --- !u!222 &899237591
 CanvasRenderer:
   m_ObjectHideFlags: 0
